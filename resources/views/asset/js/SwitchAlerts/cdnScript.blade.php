@@ -1,6 +1,8 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script src="dist/js/script.js"></script>
 <script>
+AOS.init();
 function togglePasswordVisibility() {
             const passwordInput = document.getElementById('password');
             const passwordIcon = document.getElementById('password-icon');
@@ -16,6 +18,17 @@ function togglePasswordVisibility() {
             }
         }
 
+        const button = document.getElementById('open_key');
+        const modal = document.getElementById('modal');
+        const close = document.getElementById('close');
+        button.addEventListener('click', function() {
+            modal.classList.remove('hidden')
+            modal.classList.add('block')
+        });
+
+        close.addEventListener('click', function(){
+            modal.classList.add('hidden');
+        });
 
     @if (session('success'))
         showMessageSuccess('{{ session('success') }}');

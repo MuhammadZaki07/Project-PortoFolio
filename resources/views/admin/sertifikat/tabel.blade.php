@@ -1,5 +1,23 @@
 @extends('layouts.maintable')
 @section('child-content')
+<div class="mb-4 flex justify-between items-center">
+    <form method="POST" class="flex">
+        @csrf
+        <input type="text" name="search" placeholder="Search..." class="px-4 py-2 border rounded-lg">
+    </form>
+    <div class="relative">
+        <button onclick="toggleDropdown()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+            <i class="fas fa-filter"></i> Filter
+        </button>
+        <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg hidden">
+            <div class="py-2">
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Size</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Name</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Date</a>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="container mx-auto p-4">
         <div class="bg-white shadow-lg rounded-lg p-6">
             <h2 class="text-xl font-semibold mb-4">Data Certificate</h2>

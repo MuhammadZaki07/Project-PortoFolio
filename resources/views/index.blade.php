@@ -10,12 +10,12 @@
 
 <body>
     <!-- header Start -->
-    <header class="bg-transparent absolute top-0 py-4 lg:py-0 xl:py-4 left-0 w-full flex items-center z-10">
+    <header class="bg-transparent absolute top-0 py-4 lg:py-0 xl:py-4 left-0 w-full flex items-center z-10" data-aos="fade-down" data-aos-duration="500">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between relative">
                 <div>
-                    <a href="#home" class="font-bold text-lg text-primary">Portofolio
-                        <span class="font-bold text-blue-400 uppercase text-2xl">Qu</span>
+                    <a href="#home" class="font-bold text-lg text-primary">DevCode |
+                        <span class="font-bold text-blue-400 uppercase text-2xl">ID.</span>
                     </a>
                 </div>
                 <div class="flex items-center">
@@ -34,12 +34,12 @@
                             <li class="group"><a href="#about"
                                     class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Tentang Saya</a>
                             </li>
-                            <li class="group"><a href="#portofolio"
+                            <li class="group"><a href="{{ route('project.show') }}"
                                     class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Portofolio</a>
                             </li>
                             <li class="group"><a href="#clients"
                                     class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Clients</a></li>
-                            <li class="group"><a href="#blog"
+                            <li class="group"><a href="{{ route('blog.show') }}"
                                     class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Blog</a></li>
                             <li class="group"><a href="#contact"
                                     class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Contact</a></li>
@@ -86,7 +86,7 @@
     <section id="home" class="pt-20">
         <div class="container">
             <div class="flex flex-wrap">
-                <div class="w-full self-center px-4 lg:w-1/2">
+                <div class="w-full self-center px-4 lg:w-1/2" data-aos="fade-right" data-aos-easing="ease-in-out">
                     <h1 class="text-base font-semibold text-primary md:text-xl">
                         Halo Semua👋,Saya
                         <span class="block font-bold text-dark text-3xl lg:text-5xl">Muhammad Zaki Ulumuddin</span>
@@ -104,7 +104,7 @@
                         class="text-base text-white font-semibold bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 duration-300 ease-in-out">Hubungi
                         Saya</a>
                 </div>
-                <div class="w-full self-end px-4 lg:w-1/2">
+                <div class="w-full self-end px-4 lg:w-1/2" data-aos="zoom-in-up" data-aos-duration="500" data-aos-easing="ease-in-out">
                     <div class="mt-5 relative lg:mt-9 lg:right-0">
                         <img src="dist/img/profil2.png" alt="Profil" class="max-w-full mx-auto" />
                         <span class="absolute -bottom-5 left-1/2 top-20 lg:right-0 md:scale-125 -translate-x-1/2 -z-10">
@@ -125,7 +125,7 @@
     <section id="about" class="pt-36 pb-32">
         <div class="container">
             <div class="flex flex-wrap">
-                <div class="w-full px-4 mb-10 lg:w-1/2">
+                <div class="w-full px-4 mb-10 lg:w-1/2" data-aos="fade-up" data-aos-delay="300"  >
                     <h4 class="font-bold uppercase text-primary text-lg mb-3">
                         Tentang Saya
                     </h4>
@@ -139,7 +139,7 @@
                         hobi membaca, ngoding, dan bermain alat musik yaitu rebana.
                     </p>
                 </div>
-                <div class="w-full px-4 lg:w-1/2">
+                <div class="w-full px-4 lg:w-1/2" data-aos="fade-up" data-aos-delay="500" >
                     <h3 class="text-dark font-semibold text-2xl mb-4 lg:text-3xl lg:pt-10">
                         Mari berteman
                     </h3>
@@ -205,7 +205,7 @@
     <!-- Portofolio Start -->
     <section id="portofolio" class="pt-36 pb-16 bg-slate-100">
         <div class="container">
-            <div class="w-full px-4">
+            <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Portofolio</h4>
                     <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl">
@@ -219,11 +219,11 @@
             </div>
             @if ($projects->isEmpty())
                     <img src="{{ asset('dist/img/svg/Project.svg') }}" alt="Empty Projects" class="svg-image mx-auto">
-                    <h1 class="font-bold text-slate-300 text-4xl text-center">Tidak ada Project saat ini</h1>
+                    <h1 class="font-bold text-slate-300 text-4xl text-center sm:text-2xl">Tidak ada Project saat ini</h1>
             @endif
-            <div class="w-full px-4 flex flex-wrap justify-center xl:w-10/12 xl:mx-auto">
+            <div class="w-full px-4 flex flex-wrap justify-start xl:w-10/12 xl:mx-auto">
                 @foreach ($projects as $project )
-                <div class="mb-12 p-4 md:w-1/2">
+                <div class="mb-12 p-4 md:w-1/2" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500" data-aos-easing="ease-in-out">
                     <div class="rounded-md shadow-md overflow-hidden">
                         <a href="{{ $project->url_project }}" target="_blank" class="group">
                             <img src="{{ asset('storage/' . $project->thumnail_project) }}" width="w-full" alt="{{ $project->name_project }}" class="group-hover:scale-125 transition-all duration-500"/>
@@ -267,7 +267,7 @@
     <!-- Client Section Start -->
     <section id="clients" class="pt-36 pb-32 bg-slate-700">
         <div class="container">
-            <div class="w-full px-4">
+            <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out" >
                 <div class="mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Clients</h4>
                     <h2 class="font-bold text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">
@@ -281,31 +281,31 @@
 
             <div class="w-full px-4">
                 <div class="flex flex-wrap items-center justify-center">
-                    <a href="#"
+                    <a href="#" data-aos="fade-right" data-aos-delay="200"
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/Dicoding.png" alt="Dicoding" />
                     </a>
-                    <a href="#"
+                    <a href="#" data-aos="fade-down" data-aos-delay="300"
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/bumn.png" alt="Bumn" />
                     </a>
-                    <a href="#"
+                    <a href="#"  data-aos="fade-up" data-aos-delay="600"
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/google.png" alt="google" />
                     </a>
-                    <a href="#"
+                    <a href="#"  data-aos="fade-right" data-aos-delay="200"
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/pgri.png" alt="Pgri" />
                     </a>
-                    <a href="#"
+                    <a href="#" data-aos="fade-up-right" data-aos-delay="750"
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/tokopedia.png" alt="tokopedia" />
                     </a>
-                    <a href="#"
+                    <a href="#" data-aos="fade-down-right" data-aos-delay="500"
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/gojek.png" alt="Gojek" />
                     </a>
-                    <a href="#"
+                    <a href="#" data-aos="fade-left" data-aos-delay="200"
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/shopee.png" alt="Shopee" />
                     </a>
@@ -318,7 +318,7 @@
     <!-- Blog -->
     <section id="blog" class="pt-36 pb-32 bg-slate-100">
         <div class="container">
-            <div class="w-full px-4">
+            <div class="w-full px-4"  data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Blog</h4>
                     <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl">
@@ -333,22 +333,24 @@
             </div>
             @if ($posts->isEmpty())
             <img src="{{ asset('dist/img/svg/postNull.svg') }}" alt="Empty Projects" class="svg-image mx-auto">
-            <h1 class="font-bold text-slate-300 text-4xl text-center">Tidak ada postingan saat ini</h1>
+            <h1 class="font-bold text-slate-300 text-4xl text-center sm:text-2xl">Tidak ada postingan saat ini</h1>
             @endif
-            <div class="flex flex-wrap -mx-4">
+            <div class="flex flex-wrap -mx-4 justify-center">
                 @foreach ($posts as $post)
-                    <div class="w-full px-4 sm:w-1/2 lg:w-1/3">
+                    <div class="w-full px-4 sm:w-1/2 lg:w-1/3" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500" data-aos-easing="ease-in-out">
                         <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
-                            <img src="{{ asset('storage/' . $post->image) }}" class="w-full"
-                                alt="{{ $post->title }}" />
+                            <a href="{{ route('post.views', $post->slug) }}" class="group">
+                                <img src="{{ asset('storage/' . $post->image) }}" class=" w-full group-hover:scale-125 transition-all duration-500"
+                                    alt="{{ $post->title }}" />
+                            </a>
                             <div class="py-8 px-6">
                                 <h3>
                                     <a href="{{ route('post.views', $post->slug) }}"
                                         class="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate">{{ $post->title }}</a>
                                 </h3>
-                                <p class="font-medium text-secondary text-base mb-6">
-                                    {{ Str::words($post->content, 10) }}
-                                </p>
+                                <div class="font-medium text-secondary text-base mb-6">
+                                    {!!Str::words($post->content, 10) !!}
+                                </div>
                                 <a href="{{ route('post.views', $post->slug) }}"
                                     class="bg-primary py-2 px-4 rounded-lg font-medium text-sm text-white hover:opacity-80">Baca
                                     Selengkapnya</a>
@@ -359,13 +361,12 @@
             </div>
         </div>
     </section>
-
     <!-- End Blog -->
 
     <!-- Contact -->
     <section id="contact" class="pt-36 pb-32">
         <div class="container">
-            <div class="w-full px-4">
+            <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Hubungi Saya</h4>
                     <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl">
@@ -377,20 +378,22 @@
                     </p>
                 </div>
             </div>
-            <div class="w-full lg:w-2/3 mx-auto">
-                <div class="w-full mb-8 mx-4 px-5">
-                    <form method="post">
-                        <label for="name" class="text-base font-bold text-primary">Nama</label>
-                        <input type="text" name="nama" id="name"
+            <div class="w-full lg:w-2/3 mx-auto" data-aos="zoom-in-down" data-aos-duration="500">
+                <div class="w-full mb-8 px-5">
+                    <form method="post" action="{{ route('message.store') }}">
+                        @csrf
+                        <label for="name" class="text-base font-bold text-primary">Name</label>
+                        <input type="text" name="name" id="name"
                             class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 mb-3" />
                         <label for="email" class="text-base font-bold text-primary">Email</label>
                         <input type="email" name="email" id="email"
                             class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 mb-3" />
-                        <label for="pesan" class="text-base font-bold text-primary">Pesan</label>
-                        <textarea name="pesan" id="pesan"
+                        <label for="pesan" class="text-base font-bold text-primary">Message</label>
+                        <textarea name="message" id="pesan"
                             class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 h-32 mb-3"></textarea>
                         <div class="w-full px-4">
                             <button
+                                type="submit"
                                 class="text-white bg-primary py-3 fo font-semibold text-base px-4 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500">
                                 Kirim
                             </button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,8 @@ class PostController extends Controller
     public function create()
     {
         $user = Auth::user();
-        return view('admin.post.form', compact('user'));
+        $categories = Category::all();
+        return view('admin.post.form', compact('user','categories'));
     }
 
     /**
@@ -34,18 +36,18 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
-
         $request->validate([
             'title' => 'string|max:150|required',
+            'category' => 'required|exists:category,id_category',
             'slug' => 'string|required|max:150',
-            'image_post' => 'mimes:png,jpg,jpeg|required|file|max:2000',
+            'image_post' => 'mimes:png,jpg,jpeg|required|max:2000',
             'content' => 'required|string'
         ]);
 
         $path = $request->file('image_post')->storePublicly('post', 'public');
-
         Post::create([
             'user_id' => Auth::id(),
+            'id_category' => $request->category,
             'title' => $request->title,
             'slug' => Str::slug($request->slug),
             'image' => $path,
@@ -73,7 +75,8 @@ class PostController extends Controller
     public function edit(string $id)
     {
         $post = Post::findOrFail($id);
-        return view('admin.post.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.post.edit', compact('post','categories'));
     }
 
     /**
@@ -84,6 +87,7 @@ class PostController extends Controller
     $post = Post::findOrFail($id);
 
     $request->validate([
+        'category' => 'required|exists:category,id_category',
         'title' => 'string|max:150|required',
         'slug' => 'string|required|max:150',
         'image_post' => 'mimes:png,jpg,jpeg|file|max:2000',
@@ -96,6 +100,7 @@ class PostController extends Controller
     }
 
     $post->user_id = Auth::id();
+    $post->id_category = $request->category;
     $post->title = $request->title;
     $post->slug = $request->slug;
     $post->content = $request->content;
@@ -116,5 +121,14 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('layouts.maintable')->with('success', 'Data berhasil dihapus!');
+    }
+
+    public function destroy2(string $id)
+    {
+        $post = Post::findOrFail($id);
+        Storage::disk('public')->delete($post->image);
+        $post->delete();
+
+        return redirect()->route('blog.show')->with('success', 'Data berhasil dihapus!');
     }
 }

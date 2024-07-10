@@ -28,71 +28,173 @@
                 User
             @endif</h3>
             <ul class="space-y-4">
-                @if (Auth::user()->role == 'admin')
                 <li>
-                    <a href="{{ route('admin.dashboard') }}"
-                        class="flex items-center text-gray-700 hover:text-red-500 transition {{ Request::route()->named('admin.dashboard') ? 'bg-gray-200 border-l-4 border-red-500 text-gray-900' : '' }} rounded-lg py-2 px-4">
-                        <i class="fas fa-edit mr-2"></i> Dashboard
+                    <details class="group [&_summary::-webkit-details-marker]:hidden">
+                      <summary
+                        class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      >
+                        <span class="text-sm font-medium">Data</span>
+
+                        <span class="shrink-0 transition duration-300 group-open:-rotate-180">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                      </summary>
+
+                      <ul class="mt-2 space-y-1 px-4">
+                        <li>
+                          <a
+                            href="{{ route('layouts.maintable') }}"
+                            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >
+                            Table Data
+                          </a>
+                        </li>
+
+                        <li>
+                          <a
+                            href="{{ route('admin.dashboard') }}"
+                            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >
+                            Dashboard
+                          </a>
+                        </li>
+                      </ul>
+                    </details>
+                  </li>
+                <li>
+                    <details class="group [&_summary::-webkit-details-marker]:hidden">
+                      <summary
+                        class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      >
+                        <span class="text-sm font-medium">Form</span>
+
+                        <span class="shrink-0 transition duration-300 group-open:-rotate-180">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                      </summary>
+
+                      <ul class="mt-2 space-y-1 px-4">
+                        <li>
+                          <a
+                            href="{{ route('post.create') }}"
+                            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >
+                            Form Post
+                          </a>
+                        </li>
+                        @if (Auth::user()->role == 'admin')
+                        <li>
+                          <a
+                            href="{{ route('project.create') }}"
+                            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >
+                            Form Projects
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="{{ route('sertifikat.create') }}"
+                            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >
+                            Form Certificate
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            href="{{ route('category.create') }}"
+                            class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >
+                            Form Category
+                          </a>
+                        </li>
+                        @endif
+                      </ul>
+                    </details>
+                  </li>
+                    <li>
+                        <details class="group [&_summary::-webkit-details-marker]:hidden">
+                          <summary
+                            class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                          >
+                            <span class="text-sm font-medium">Profile</span>
+
+                            <span class="shrink-0 transition duration-300 group-open:-rotate-180">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                              >
+                                <path
+                                  fill-rule="evenodd"
+                                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                  clip-rule="evenodd"
+                                />
+                              </svg>
+                            </span>
+                          </summary>
+
+                          <ul class="mt-2 space-y-1 px-4">
+                            <li>
+                              <a
+                                href="{{ route('Users.edit', ['id' => Auth::user()->id]) }}"
+                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                              >
+                                Profile
+                              </a>
+                            </li>
+
+                            <li>
+                              <a
+                                href="{{ route('Auth.Form_password') }}"
+                                class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                              >
+                                Password
+                              </a>
+                            </li>
+                            <li>
+                 <form id="logout-form" action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button type="button" onclick="confirmLogout()"
+                        class="flex items-center text-gray-700 hover:text-red-500 transition rounded-lg py-2 px-4">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    </button>
+                 </form>
+                            </li>
+                          </ul>
+                        </details>
+                      </li>
+                </li>
+                <li>
+                    <a
+                      href="{{ route('index') }}"
+                      class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                    >
+                      Home
                     </a>
-                </li>
-                @endif
-                <li>
-                    <a href="{{ route('Users.edit', ['id' => Auth::user()->id]) }}"
-                        class="flex items-center text-gray-700 hover:text-red-500 transition {{ Request::route()->named('Users.edit') ? 'bg-gray-200 border-l-4 border-red-500 text-gray-900' : '' }} rounded-lg py-2 px-4">
-                        <i class="fas fa-user-edit mr-2"></i> Profil
-                    </a>
-                </li>
-                @if (Auth::user()->role == 'admin')
-                <li>
-                    <a href="{{ route('layouts.maintable') }}"
-                        class="flex items-center text-gray-700 hover:text-red-500 transition {{ Request::route()->named('layouts.maintable*') ? 'bg-gray-200 border-l-4 border-red-500 text-gray-900' : '' }} rounded-lg py-2 px-4">
-                        <i class="fas fa-table mr-2"></i> Table
-                    </a>
-                </li>
-                @endif
-                <li>
-                    <a href="{{ route('post.create') }}"
-                        class="flex items-center text-gray-700 hover:text-red-500 transition {{ Request::route()->named('post.create') ? 'bg-gray-200 border-l-4 border-red-500 text-gray-900' : '' }} rounded-lg py-2 px-4">
-                        <i class="fas fa-pencil-alt mr-2"></i> Tambah Postingan
-                    </a>
-                </li>
-                @if (Auth::user()->role == 'admin')
-                <li>
-                    <a href="{{ route('project.create') }}"
-                        class="flex items-center text-gray-700 hover:text-red-500 transition {{ Request::route()->named('project.create') ? 'bg-gray-200 border-l-4 border-red-500 text-gray-900' : '' }} rounded-lg py-2 px-4">
-                        <i class="fas fa-project-diagram mr-2"></i> Tambah Project
-                    </a>
-                </li>
-                @endif
-                @if (Auth::user()->role == 'admin')
-                <li>
-                    <a href="{{ route('sertifikat.create') }}"
-                        class="flex items-center text-gray-700 hover:text-red-500 transition {{ Request::route()->named('sertifikat.create') ? 'bg-gray-200 border-l-4 border-red-500 text-gray-900' : '' }} rounded-lg py-2 px-4">
-                        <i class="fas fa-certificate mr-2"></i> Tambah Sertifikat
-                    </a>
-                </li>
-                @endif
-                <li>
-                    <a href="{{ route('Auth.Form_password') }}"
-                        class="flex items-center text-gray-700 hover:text-red-500 transition {{ Request::route()->named('Auth.Form_password') ? 'bg-gray-200 border-l-4 border-red-500 text-gray-900' : '' }} rounded-lg py-2 px-4">
-                        <i class="fas fa-key mr-2"></i> Ganti Password
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('index') }}"
-                        class="flex items-center text-gray-700 hover:text-red-500 transition {{ Request::route()->named('index') ? 'bg-gray-200 border-l-4 border-red-500 text-gray-900' : '' }} rounded-lg py-2 px-4">
-                        <i class="fas fa-eye mr-2"></i> Views
-                    </a>
-                </li>
-                <li>
-                    <form id="logout-form" action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <button type="button" onclick="confirmLogout()"
-                            class="flex items-center text-gray-700 hover:text-red-500 transition rounded-lg py-2 px-4">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                        </button>
-                    </form>
-                </li>
+                  </li>
                 <li>
                     <div class="w-full py-2 p-3 rounded-lg relative shadow-xl border-l-4 border-dark bg-yellow-300">
                         <span class="text-white text-sm font-semibold">Halaman Ini Belum Responsif</span>

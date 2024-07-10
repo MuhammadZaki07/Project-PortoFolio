@@ -27,6 +27,18 @@
         </div>
     </div>
     <div class="mb-4">
+        <label for="category" class="block text-sm font-medium text-gray-900"> Category </label>
+        <select name="category" id="category"
+            class="mt-1.5 w-full rounded-lg py-3 border-dark border text-gray-700 sm:text-sm">
+            @foreach ($categories as $category)
+            @php
+                $selected = ($category->id_category == $post->category->id_category) ? 'selected' : '';
+            @endphp
+                <option  value="{{ $category->id_category }}" {{ $selected }}>{{ $category->name_category }}</option>
+            @endforeach
+        </select>
+    </div>
+    <div class="mb-4">
         <label class="block text-gray-700">Konten</label>
         <input type="hidden" name="content" id="content">
         <div id="editor">{!! $post->content !!}</div>

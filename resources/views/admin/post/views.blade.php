@@ -19,6 +19,7 @@
                 </div>
             </div>
             <h2 class="text-3xl font-semibold mb-2">{{ $post->title }}</h2>
+            <p class="text-xs font-semibold text-gray-700">Category : {{ $post->category->name_category }}</p>
             <div class="w-full font-sans mb-10">
                 <p class="mt-4"> {!! $post->content !!}</p>
             </div>

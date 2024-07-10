@@ -12,6 +12,15 @@
             <input type="text" name="name_project" autofocus class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-red-500">
         </div>
         <div class="mb-4">
+            <label for="category" class="block text-sm font-medium text-gray-900"> Category </label>
+            <select name="category" id="category"
+                class="mt-1.5 w-full rounded-lg py-3 border-dark border text-gray-700 sm:text-sm">
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id_category }}">{{ $category->name_category }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-4">
             <label class="block text-gray-700">Link Project</label>
             <input type="url" name="url_project" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-red-500">
         </div>

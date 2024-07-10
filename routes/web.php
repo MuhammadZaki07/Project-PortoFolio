@@ -18,8 +18,8 @@ use App\Http\Controllers\SertifikatController;
 require __DIR__.'/route/Auth/Auth.php';
 require __DIR__.'/route/halaman_utama/index.php';
 require __DIR__.'/route/route_group_Auth/routeAuth.php';
+require __DIR__.'/route/emails/Routeemail.php';
 // Ending BROWWW!!!
-
 
 
 

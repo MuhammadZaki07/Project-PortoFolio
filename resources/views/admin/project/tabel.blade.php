@@ -1,5 +1,23 @@
 @extends('layouts.maintable')
 @section('child-content')
+<div class="mb-4 flex justify-between items-center">
+    <form method="POST" class="flex">
+        @csrf
+        <input type="text" name="search" placeholder="Search..." class="px-4 py-2 border rounded-lg">
+    </form>
+    <div class="relative">
+        <button onclick="toggleDropdown()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
+            <i class="fas fa-filter"></i> Filter
+        </button>
+        <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg hidden">
+            <div class="py-2">
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Size</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Name</a>
+                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Date</a>
+            </div>
+        </div>
+    </div>
+</div>
     <div class="container mx-auto p-4">
         <div class="bg-white shadow-lg rounded-lg p-6">
             <h2 class="text-xl font-semibold mb-4">Data Project</h2>
@@ -11,7 +29,7 @@
                             <th class="py-3 text-center">Nama Project</th>
                             <th class="px-4 py-2 text-center">Url</th>
                             <th class="px-4 py-2 text-center">Thumnail</th>
-                            <th class="px-4 py-2 text-center">Deskripsi</th>
+                            <th class="px-4 py-2 text-center">Category</th>
                             <th class="px-4 py-2 text-center">Action</th>
                         </tr>
                     </thead>
@@ -22,8 +40,8 @@
                                 <td class="text-xs  px-2 py-1 text-center">{{ $loop->iteration }}</td>
                                 <td class="text-xs  px-2 py-1 text-center">{{ Str::words($project->name_project,10) }}</td>
                                 <td class="text-xs  px-2 py-1 text-center truncate-text">
-                                    <a href="{{ $project->link_project }}" target="_blank" class="text-blue-500 underline block cursor-pointer">
-                                        {{ Str::limit($project->link_project, 7,'...') }}
+                                    <a href="{{ $project->url_project }}" target="_blank" class="text-blue-500 underline block cursor-pointer">
+                                        {{ Str::limit($project->url_project, 8,'...') }}
                                     </a>
                                 </td>
                                 <td class="text-xs  px-2 py-1 text-center">
@@ -31,12 +49,12 @@
                                         class="w-15 h-10 mx-auto rounded-lg shadow-lg">
                                 </td>
                                 <td class="text-xs  px-2 py-1 text-center">
-                                    {!! Str::words( $project->description_project,1) !!}
+                                    {{ $project->category->name_category }}
                                 </td>
                                 <td class="text-xs  px-2 py-1 text-center">
 
                                         <div class="flex space-x-2 justify-center">
-                                            <a href="{{ $project->link_project }}" target="_blank"
+                                            <a href="{{ $project->url_project }}" target="_blank"
                                                 class="text-dark hover:text-white hover:bg-blue-700 bg-blue-400 px-4 py-3 rounded-xl shadow-lg"><i
                                                     class="fas fa-eye"></i></a>
                                             <a href="{{ route('project.edit', $project->id) }}"
@@ -51,7 +69,6 @@
                                                         class="fas fa-trash"></i></button>
                                             </form>
                                         </div>
-
                                 </td>
                             </tr>
                         @endforeach
@@ -61,22 +78,4 @@
         </div>
     </div>
     @include('asset.js.assetAdmin.AssetJS')
-    <script>
-        function confirmDelete() {
-            Swal.fire({
-                title: 'Konfirmasi Hapus',
-                text: 'Anda yakin ingin menghapus data ini?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: 'Hapus',
-                cancelButtonText: 'Batal'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('delete-post').submit();
-                }
-            });
-        }
-    </script>
 @endsection

@@ -11,6 +11,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id_category',
         'title',
         'user_id',
         'slug',
@@ -37,4 +38,10 @@ class Post extends Model
 
         return $like ? true : false;
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'id_category');
+    }
+
 }

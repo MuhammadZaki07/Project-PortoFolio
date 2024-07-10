@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_category')->nullable();
+            $table->foreign('id_category')->references('id_category')->on('category')->onDelete('set null')->onUpdate('cascade');
             $table->string('name_project',50);
             $table->string('url_project');
             $table->string('url_youtube');

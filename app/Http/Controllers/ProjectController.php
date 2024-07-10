@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\AdminMiddleware;
-use App\Models\Project;
 use Closure;
+use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Middleware\AdminMiddleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
 class ProjectController extends Controller implements HasMiddleware
 {
@@ -33,7 +34,8 @@ class ProjectController extends Controller implements HasMiddleware
      */
     public function create()
     {
-        return view('admin.project.form');
+        $categories = Category::all();
+        return view('admin.project.form', compact('categories'));
     }
 
     /**
@@ -42,6 +44,7 @@ class ProjectController extends Controller implements HasMiddleware
     public function store(Request $request)
     {
         $request->validate([
+            'category' => 'required|exists:category,id_category',
             'name_project' => 'required|max:50|string',
             'url_project' => 'required|string',
             'url_youtube' => 'required|string',
@@ -52,6 +55,7 @@ class ProjectController extends Controller implements HasMiddleware
 
         $path = $request->file('thumnail_project')->storePublicly('project', 'public');
         Project::create([
+            'id_category' => $request->category,
             'name_project' => $request->name_project,
             'url_project'=> $request->url_project,
             'url_youtube'=> $request->url_youtube,
@@ -78,7 +82,8 @@ class ProjectController extends Controller implements HasMiddleware
     public function edit(string $id)
     {
         $project = Project::findOrFail($id);
-        return view('admin.project.edit',compact('project'));
+        $categories = Category::all();
+        return view('admin.project.edit',compact('project','categories'));
     }
 
     /**
@@ -88,6 +93,7 @@ class ProjectController extends Controller implements HasMiddleware
     {
         $project = Project::findOrFail($id);
         $request->validate([
+            'category' => 'required|exists:category,id_category',
             'name_project' => 'required|max:100|string',
             'url_project' => 'required|string',
             'url_youtube' => 'required|string',
@@ -101,6 +107,8 @@ class ProjectController extends Controller implements HasMiddleware
             $project->thumnail_project = $path;
         }
 
+
+        $project->id_category = $request->category;
         $project->name_project = $request->name_project;
         $project->url_project = $request->url_project;
         $project->url_youtube = $request->url_youtube;
@@ -120,5 +128,13 @@ class ProjectController extends Controller implements HasMiddleware
         Storage::disk('public')->delete($project->thumnail_project);
         $project->delete();
         return redirect()->route('layouts.maintable.project')->with('success', 'Project deleted successfully!!');
+    }
+
+    public function destroy2(string $id)
+    {
+        $project = Project::findOrFail($id);
+        Storage::disk('public')->delete($project->thumnail_project);
+        $project->delete();
+        return redirect()->route('project.show')->with('success', 'Project deleted successfully!!');
     }
 }

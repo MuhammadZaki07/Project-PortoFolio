@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ asset('dist/img/logo.png') }}">
     <title>Post | {{ $posts->slug }}</title>
     @include('asset.js.postAsset.cdnPostsView')
 </head>
@@ -32,7 +33,9 @@
                 </div>
             </div>
             <div class="mt-10 p-2 xl:mt-5">
-                <p class="font-sans mb-5 text-dark text-base"> {!! nl2br(e($posts->content)) !!}</p>
+                <div class="font-sans mb-5 text-dark text-base">
+                    {!! $posts->content !!}
+                </div>
             </div>
             <hr class="my-10">
             <div class="container">

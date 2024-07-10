@@ -3,6 +3,7 @@ use App\Http\Controllers\login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LikesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProjectController;
@@ -19,9 +20,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
     Route::put('/admin/post/update/{id}', [PostController::class, 'update'])->name('post.update');
     Route::delete('/admin/post/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+    Route::delete('/admin/post/delete/{id}', [PostController::class, 'destroy2'])->name('post.destroy2');
     Route::get('/admin/post/show/{slug}', [PostController::class, 'show'])->name('post.show');
     // End Route Post
 
+    // Route Category
+    Route::get('/layouts/maintable/category', [CategoryController::class, 'index'])->name('layouts.maintable.category');
+    Route::get('/admin/category/Form', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('/admin/category/Form', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/admin/category/edit/{id_category}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('/admin/category/update/{id_category}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/admin/category/delete{id_category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+    // End
 
     // Route Project
     Route::get('/layouts/maintable/project', [ProjectController::class, 'index'])->name('layouts.maintable.project');
@@ -30,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/project/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
     Route::put('/admin/project/update/{id}', [ProjectController::class, 'update'])->name('project.update');
     Route::delete('/admin/project/delete{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
+    Route::delete('/admin/project/delete{id}', [ProjectController::class, 'destroy2'])->name('project.destroy2');
     // End Route Project
 
 
