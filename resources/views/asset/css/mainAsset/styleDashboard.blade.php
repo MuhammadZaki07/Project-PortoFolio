@@ -6,4 +6,3 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/output.css') }}">
-<script src="{{ asset('js/script.js') }}"></script>

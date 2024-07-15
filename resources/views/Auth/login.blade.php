@@ -23,7 +23,7 @@
                             required>
                         <span id="password-toggle" class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
                             onclick="togglePasswordVisibility()">
-                            <i id="password-icon" class="bi bi-eye text-gray-700"></i> <!-- Bootstrap Icons for eye icon -->
+                            <i id="password-icon" class="bi bi-eye text-gray-700"></i>
                         </span>
                     </div>
                     @error('password')
@@ -39,11 +39,13 @@
             </form>
             <div class="mt-4 text-center">
                 <span>Anda belum punya akun? daftar <a href="{{ route('register') }}"
-                        class="text-red-500 hover:underline">disini</a></span>
+                        class="text-red-500 hover:underline ">disini</a></span>
+                        <span><a href="{{ route('forgot.Password') }}" class="text-slate-400 text-xs block mt-2 underline">Lupa password?</a></span>
             </div>
         </div>
     </div>
 @endsection
 @section('script')
-    @include('asset.js.SwitchAlerts.cdnScript')
+    @include('asset.js.SwitchAlerts.switchAlerts')
+    <script src="{{ asset('js/crud file script/scriptCrud.js') }}"></script>
 @endsection

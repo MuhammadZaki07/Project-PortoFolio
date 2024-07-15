@@ -46,7 +46,9 @@
     <button type="submit" class="px-4 py-2 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600">Ubah</button>
 </form>
 </div>
-@include('asset.js.assetAdmin.Assetquill.quill')
-@include('asset.js.previewImage.previewImage')
-@include('asset.js.assetAdmin.AssetJS')
+@endsection
+@section('script')
+<script src="{{ asset('js/crud file script/scriptCrud.js') }}"></script>
+<script src="{{ asset('js/quil file script/quil.js') }}"></script>
+<script src="{{ asset('js/view image script/preview.js') }}"></script>
 @endsection

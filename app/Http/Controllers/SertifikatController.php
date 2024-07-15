@@ -99,7 +99,7 @@ class SertifikatController extends Controller implements HasMiddleware
         $sertifikat->description = $request->content;
         $sertifikat->save();
 
-        return redirect()->route('layouts.maintable.sertifikat')->with('success','Certicate success Update!!!');
+        return redirect()->route('layouts.maintable.sertifikat')->with('success', 'Certicate success Update!!!');
     }
 
     /**
@@ -112,5 +112,15 @@ class SertifikatController extends Controller implements HasMiddleware
         $sertifikat->delete();
 
         return redirect()->route('layouts.maintable.sertifikat')->with('success', 'Certificate deleted successfully');
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = $request->input('search');
+            $sertifikats = Sertifikat::where('name_certificate', 'like', '%' . $query . '%')
+                ->orWhere('title', 'like', '%' . $query . '%')->get();
+            return view('admin.sertifikat.partials.index', compact('sertifikats'));
+        }
     }
 }

@@ -1,23 +1,11 @@
 @extends('layouts.maintable')
 @section('child-content')
-<div class="mb-4 flex justify-between items-center">
-    <form method="POST" class="flex">
-        @csrf
-        <input type="text" name="search" placeholder="Search..." class="px-4 py-2 border rounded-lg">
-    </form>
-    <div class="relative">
-        <button onclick="toggleDropdown()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
-            <i class="fas fa-filter"></i> Filter
-        </button>
-        <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg hidden">
-            <div class="py-2">
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Size</a>
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Name</a>
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Date</a>
-            </div>
-        </div>
+    <div class="mb-4 flex justify-between items-center">
+        <form method="GET" action="{{ route('sertifikat.search') }}" class="flex">
+            @csrf
+            <input type="text" id="search" name="search" placeholder="Search..." class="px-4 py-2 border rounded-lg">
+        </form>
     </div>
-</div>
     <div class="container mx-auto p-4">
         <div class="bg-white shadow-lg rounded-lg p-6">
             <h2 class="text-xl font-semibold mb-4">Data Certificate</h2>
@@ -33,37 +21,8 @@
                             <th class="px-4 py-2 text-center">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($sertifikats as $sertifikat)
-                            <tr>
-                                <td class="text-xs  px-2 py-1 text-center">{{ $loop->iteration }}</td>
-                                <td class="text-xs  px-2 py-1 text-center">{{ Str::words($sertifikat->name_certificate,10) }}</td>
-                                <td class="text-xs  px-2 py-1 text-center">{{ Str::words($sertifikat->title) }}</td>
-                                <td class="text-xs  px-2 py-1 text-center">
-                                    <img src="{{ asset('storage/' . $sertifikat->image) }}"
-                                        class="w-20 h-15 mx-auto mt-2 rounded-lg shadow-dark">
-                                </td>
-                                <td class="text-xs  px-2 py-1 text-center">{!! Str::words( $sertifikat->description,1) !!}</td>
-                                <td class="text-xs  px-2 py-1 text-center">
-                                    <div class="flex space-x-2 justify-center">
-                                        <a href="" id="buttondetails" data-certificate-id="{{ $sertifikat->id }}"
-                                            class="text-dark hover:text-white hover:bg-blue-700 bg-blue-400 px-4 py-3 rounded-xl shadow-lg"><i
-                                                class="fas fa-eye"></i></a>
-                                        <a href="{{ route('sertifikat.edit',$sertifikat->id) }}"
-                                            class="text-dark hover:text-white hover:bg-orange-700 bg-orange-400 px-4 py-3 rounded-xl shadow-lg"><i
-                                                class="fas fa-edit"></i></a>
-                                        <form id="delete-post" action="{{ route('sertifikat.destroy', $sertifikat->id) }}"
-                                            method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button onclick="confirmDelete()" type="button"
-                                                class="text-dark hover:text-white hover:bg-red-700 bg-red-600 px-4 py-3 rounded-xl shadow-lg"><i
-                                                    class="fas fa-trash"></i></button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                    <tbody id="certificate-results">
+                        @include('admin.sertifikat.partials.index', ['sertifikats' => $sertifikats])
                     </tbody>
                 </table>
             </div>
@@ -87,6 +46,10 @@
             </div>
         </div>
     </div>
+@endsection
 
-@include('asset.js.assetAdmin.AssetJS')
+@section('script')
+    <script src="{{ asset('js/modal file script/modal.js') }}"></script>
+    <script src="{{ asset('js/ajax file script/ajax.js') }}"></script>
+    @include('asset.js.SwitchAlerts.switchAlerts')
 @endsection

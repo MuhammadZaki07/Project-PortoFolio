@@ -1,4 +1,5 @@
 <?php
+
 use App\Http\Controllers\login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -20,8 +21,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/post/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
     Route::put('/admin/post/update/{id}', [PostController::class, 'update'])->name('post.update');
     Route::delete('/admin/post/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
-    Route::delete('/admin/post/delete/{id}', [PostController::class, 'destroy2'])->name('post.destroy2');
+    Route::delete('/admin/post/deletee/{id}', [PostController::class, 'destroy2'])->name('post.destroy2');
     Route::get('/admin/post/show/{slug}', [PostController::class, 'show'])->name('post.show');
+    Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
     // End Route Post
 
     // Route Category
@@ -39,8 +41,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/project/Form', [ProjectController::class, 'store'])->name('project.store');
     Route::get('/admin/project/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
     Route::put('/admin/project/update/{id}', [ProjectController::class, 'update'])->name('project.update');
-    Route::delete('/admin/project/delete{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
-    Route::delete('/admin/project/delete{id}', [ProjectController::class, 'destroy2'])->name('project.destroy2');
+    Route::delete('/admin/project/delete/{id}', [ProjectController::class, 'destroy'])->name('project.destroy');
+    Route::delete('/admin/project/deletee/{id}', [ProjectController::class, 'destroy2'])->name('project.destroy2');
+    Route::get('/search/project', [ProjectController::class, 'search'])->name('search.project');
     // End Route Project
 
 
@@ -52,6 +55,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('/admin/sertifikat/update/{id}', [SertifikatController::class, 'update'])->name('sertifikat.update');
     Route::delete('/admin/sertifikat/delete/{id}', [SertifikatController::class, 'destroy'])->name('sertifikat.destroy');
     Route::get('/admin/sertifikat/{id}', [SertifikatController::class, 'show'])->name('sertifikat.show');
+    Route::get('/search/certificate', [SertifikatController::class, 'search'])->name('sertifikat.search');
     // End Route Sertifikat
 
 
@@ -60,8 +64,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/Users/Form', [UsersController::class, 'store'])->name('Users.store');
     Route::get('/admin/Users/edit/{id}', [UsersController::class, 'edit'])->name('Users.edit');
     Route::put('/admin/Users/update/{id}', [UsersController::class, 'update'])->name('Users.update');
-    Route::delete('/admin/Users/delete', [UsersController::class, 'destroy'])->name('Users.destroy');
+    Route::delete('/admin/Users/delete/{id}', [UsersController::class, 'destroy'])->name('Users.destroy');
     Route::get('/admin/Users/{id}', [UsersController::class, 'show'])->name('user.show');
+    Route::get('/search', [UsersController::class, 'search'])->name('users.search');
     // End Route users
 
 
@@ -79,5 +84,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Proccess Log-out
     Route::post('/logout', [login::class, 'logout'])->name('logout');
     // End Proccess Log-out
+
+    Route::post('/password/change',[login::class, 'changePassword'])->name('password.change');
 
 });

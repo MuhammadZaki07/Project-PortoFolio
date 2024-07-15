@@ -10,10 +10,10 @@ window.onscroll = function () {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-    const hamburgerButton = document.getElementById("hamburger");
     const userphoto = document.getElementById("user-photo");
+    const hamburgerButton = document.getElementById("hamburger");
     if (hamburgerButton) {
-        hamburgerButton.addEventListener("click", function () {
+        document.addEventListener("click", function () {
             const navMenu = document.getElementById("nav-menu");
             if (navMenu) {
                 navMenu.classList.toggle("hidden");
@@ -21,13 +21,24 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    if (userphoto) {
-        userphoto.addEventListener("click", function () {
-            const dropdown = document.getElementById("dropdown");
 
+    if (userphoto) {
+        userphoto.addEventListener("click", function (event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById("dropdown");
             if (dropdown) {
                 dropdown.classList.toggle("hidden");
             }
         });
     }
+
+    document.addEventListener("click", function (event) {
+        const dropdown = document.getElementById("dropdown");
+        if (dropdown && !dropdown.classList.contains("hidden")) {
+            if (!userphoto.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.classList.add("hidden");
+            }
+        }
+    });
+
 });

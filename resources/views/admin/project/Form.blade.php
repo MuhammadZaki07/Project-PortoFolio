@@ -48,7 +48,10 @@
     </form>
     </div>
 </div>
-@include('asset.js.assetAdmin.Assetquill.quill')
-@include('asset.js.previewImage.previewImage')
-@include('asset.js.assetAdmin.AssetJS')
+@endsection
+@section('script')
+@include('asset.js.SwitchAlerts.switchAlerts')
+<script src="{{ asset('js/quil file script/quil.js') }}"></script>
+<script src="{{ asset('js/view image script/preview.js') }}"></script>
+<script src="{{ asset('js/crud file script/scriptCrud.js') }}"></script>
 @endsection

@@ -5,12 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DevCode.id</title>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     @include('asset.css.mainAsset.styleIndex')
 </head>
 
 <body>
     <!-- header Start -->
-    <header class="bg-transparent absolute top-0 py-4 lg:py-0 xl:py-4 left-0 w-full flex items-center z-10" data-aos="fade-down" data-aos-duration="500">
+    <header class="bg-transparent absolute top-0 py-4 lg:py-0 xl:py-4 left-0 w-full flex items-center z-10"
+        data-aos="fade-down" data-aos-duration="500">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between relative">
                 <div>
@@ -104,7 +106,8 @@
                         class="text-base text-white font-semibold bg-primary py-3 px-8 rounded-full hover:shadow-lg hover:opacity-80 duration-300 ease-in-out">Hubungi
                         Saya</a>
                 </div>
-                <div class="w-full self-end px-4 lg:w-1/2" data-aos="zoom-in-up" data-aos-duration="500" data-aos-easing="ease-in-out">
+                <div class="w-full self-end px-4 lg:w-1/2" data-aos="zoom-in-up" data-aos-duration="500"
+                    data-aos-easing="ease-in-out">
                     <div class="mt-5 relative lg:mt-9 lg:right-0">
                         <img src="dist/img/profil2.png" alt="Profil" class="max-w-full mx-auto" />
                         <span class="absolute -bottom-5 left-1/2 top-20 lg:right-0 md:scale-125 -translate-x-1/2 -z-10">
@@ -125,7 +128,7 @@
     <section id="about" class="pt-36 pb-32">
         <div class="container">
             <div class="flex flex-wrap">
-                <div class="w-full px-4 mb-10 lg:w-1/2" data-aos="fade-up" data-aos-delay="300"  >
+                <div class="w-full px-4 mb-10 lg:w-1/2" data-aos="fade-up" data-aos-delay="300">
                     <h4 class="font-bold uppercase text-primary text-lg mb-3">
                         Tentang Saya
                     </h4>
@@ -139,7 +142,7 @@
                         hobi membaca, ngoding, dan bermain alat musik yaitu rebana.
                     </p>
                 </div>
-                <div class="w-full px-4 lg:w-1/2" data-aos="fade-up" data-aos-delay="500" >
+                <div class="w-full px-4 lg:w-1/2" data-aos="fade-up" data-aos-delay="500">
                     <h3 class="text-dark font-semibold text-2xl mb-4 lg:text-3xl lg:pt-10">
                         Mari berteman
                     </h3>
@@ -218,46 +221,50 @@
                 </div>
             </div>
             @if ($projects->isEmpty())
-                    <img src="{{ asset('dist/img/svg/Project.svg') }}" alt="Empty Projects" class="svg-image mx-auto">
-                    <h1 class="font-bold text-slate-300 text-4xl text-center sm:text-2xl">Tidak ada Project saat ini</h1>
+                <img src="{{ asset('dist/img/svg/Project.svg') }}" alt="Empty Projects" class="svg-image mx-auto">
+                <h1 class="font-bold text-slate-300 text-4xl text-center sm:text-2xl">Tidak ada Project saat ini</h1>
             @endif
             <div class="w-full px-4 flex flex-wrap justify-start xl:w-10/12 xl:mx-auto">
-                @foreach ($projects as $project )
-                <div class="mb-12 p-4 md:w-1/2" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500" data-aos-easing="ease-in-out">
-                    <div class="rounded-md shadow-md overflow-hidden">
-                        <a href="{{ $project->url_project }}" target="_blank" class="group">
-                            <img src="{{ asset('storage/' . $project->thumnail_project) }}" width="w-full" alt="{{ $project->name_project }}" class="group-hover:scale-125 transition-all duration-500"/>
-                        </a>
+                @foreach ($projects as $project)
+                    <div class="mb-12 p-4 md:w-1/2" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500"
+                        data-aos-easing="ease-in-out">
+                        <div class="rounded-md shadow-md overflow-hidden">
+                            <a href="{{ $project->url_project }}" target="_blank" class="group">
+                                <img src="{{ asset('storage/' . $project->thumnail_project) }}" width="w-full"
+                                    alt="{{ $project->name_project }}"
+                                    class="group-hover:scale-125 transition-all duration-500" />
+                            </a>
+                        </div>
+                        <h3 class="font-semibold text-xl text-dark mt-5 mb-3">
+                            <a href="{{ $project->url_project }}" target="_blank"
+                                class="hover:text-blue-400 hover:underline">
+                                {{ $project->name_project }}
+                            </a>
+                        </h3>
+                        <p class="font-medium text-base text-secondary md:text-lg">
+                            {!! $project->description_project !!}
+                        </p>
+                        <div class="flex items-center mt-5">
+                            <a href="{{ $project->url_youtube }}" target="_blank"
+                                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white text-slate-300">
+                                <svg role="img" class="fill-current" width="20" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <title>YouTube</title>
+                                    <path
+                                        d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                                </svg>
+                            </a>
+                            <a href="{{ $project->url_github }}" target="_blank"
+                                class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white text-slate-300">
+                                <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <title>GitHub</title>
+                                    <path
+                                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
-                    <h3 class="font-semibold text-xl text-dark mt-5 mb-3">
-                        <a href="{{ $project->url_project }}" target="_blank" class="hover:text-blue-400 hover:underline">
-                            {{ $project->name_project }}
-                        </a>
-                    </h3>
-                    <p class="font-medium text-base text-secondary md:text-lg">
-                        {!! $project->description_project !!}
-                    </p>
-                    <div class="flex items-center mt-5">
-                        <a href="{{ $project->url_youtube }}" target="_blank"
-                            class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white text-slate-300">
-                            <svg role="img" class="fill-current" width="20" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <title>YouTube</title>
-                                <path
-                                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                            </svg>
-                        </a>
-                        <a href="{{ $project->url_github }}" target="_blank"
-                            class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white text-slate-300">
-                            <svg role="img" width="20" class="fill-current" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <title>GitHub</title>
-                                <path
-                                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
                 @endforeach
             </div>
         </div>
@@ -267,7 +274,7 @@
     <!-- Client Section Start -->
     <section id="clients" class="pt-36 pb-32 bg-slate-700">
         <div class="container">
-            <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out" >
+            <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
                 <div class="mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Clients</h4>
                     <h2 class="font-bold text-white text-3xl mb-4 sm:text-4xl lg:text-5xl">
@@ -289,11 +296,11 @@
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/bumn.png" alt="Bumn" />
                     </a>
-                    <a href="#"  data-aos="fade-up" data-aos-delay="600"
+                    <a href="#" data-aos="fade-up" data-aos-delay="600"
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/google.png" alt="google" />
                     </a>
-                    <a href="#"  data-aos="fade-right" data-aos-delay="200"
+                    <a href="#" data-aos="fade-right" data-aos-delay="200"
                         class="max-w-[120px] mx-4 py-4 grayscale opacity-50 transition hover:opacity-100 hover:grayscale-0 duration-500 lg:mx-6 xl:mx-8">
                         <img src="dist/Portofolio/pgri.png" alt="Pgri" />
                     </a>
@@ -318,7 +325,7 @@
     <!-- Blog -->
     <section id="blog" class="pt-36 pb-32 bg-slate-100">
         <div class="container">
-            <div class="w-full px-4"  data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
+            <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Blog</h4>
                     <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl">
@@ -332,15 +339,17 @@
                 </div>
             </div>
             @if ($posts->isEmpty())
-            <img src="{{ asset('dist/img/svg/postNull.svg') }}" alt="Empty Projects" class="svg-image mx-auto">
-            <h1 class="font-bold text-slate-300 text-4xl text-center sm:text-2xl">Tidak ada postingan saat ini</h1>
+                <img src="{{ asset('dist/img/svg/postNull.svg') }}" alt="Empty Projects" class="svg-image mx-auto">
+                <h1 class="font-bold text-slate-300 text-4xl text-center sm:text-2xl">Tidak ada postingan saat ini</h1>
             @endif
             <div class="flex flex-wrap -mx-4 justify-center">
                 @foreach ($posts as $post)
-                    <div class="w-full px-4 sm:w-1/2 lg:w-1/3" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500" data-aos-easing="ease-in-out">
+                    <div class="w-full px-4 sm:w-1/2 lg:w-1/3" data-aos="zoom-in" data-aos-delay="300"
+                        data-aos-duration="500" data-aos-easing="ease-in-out">
                         <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
                             <a href="{{ route('post.views', $post->slug) }}" class="group">
-                                <img src="{{ asset('storage/' . $post->image) }}" class=" w-full group-hover:scale-125 transition-all duration-500"
+                                <img src="{{ asset('storage/' . $post->image) }}"
+                                    class=" w-full group-hover:scale-125 transition-all duration-500"
                                     alt="{{ $post->title }}" />
                             </a>
                             <div class="py-8 px-6">
@@ -349,7 +358,7 @@
                                         class="block mb-3 font-semibold text-xl text-dark hover:text-primary truncate">{{ $post->title }}</a>
                                 </h3>
                                 <div class="font-medium text-secondary text-base mb-6">
-                                    {!!Str::words($post->content, 10) !!}
+                                    {!! Str::words($post->content, 10) !!}
                                 </div>
                                 <a href="{{ route('post.views', $post->slug) }}"
                                     class="bg-primary py-2 px-4 rounded-lg font-medium text-sm text-white hover:opacity-80">Baca
@@ -363,8 +372,53 @@
     </section>
     <!-- End Blog -->
 
+    <section class="pt-36 bg-white pb-10">
+
+        <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
+            <div class="max-w-xl mx-auto text-center">
+                <h4 class="font-semibold text-lg text-primary mb-2">Framework</h4>
+                <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl">
+                    Framework yang saya gunakan
+                </h2>
+                <p class="font-medium text-secondary text-md md:text-lg">
+                    berikut adalah frameworks yang saya gunakan untuk membuat website ini
+                </p>
+            </div>
+        </div>
+        <div class='flex items-center justify-center py-20'>
+            <div>
+                <div class="mt-2 grid grid-cols-2 gap-10 md:grid-cols-4 sm:grid-cols-2" id="frameworks-integration">
+                    <a class="grid w-full min-w-[10rem] p-10 transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25" data-aos="zoom-in"
+                        href="https://laravel.com/" target="_blank">
+                        <span class="my-6 grid h-24 w-24 place-items-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png" alt="" class="mx-auto">
+                        </span>
+                    </a>
+                    <a class="grid w-full min-w-[7rem] transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25" data-aos="zoom-in" data-aos-delay="300"
+                        href="#">
+                        <span class="my-6 grid h-24 w-24 place-items-center">
+                            <img src="https://seeklogo.com/images/T/tailwind-css-logo-5AD4175897-seeklogo.com.png" alt="tailwindcss" class="mx-auto">
+                        </span>
+                    </a>
+                    <a class="grid w-full min-w-[7rem] transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25" data-aos="zoom-in" data-aos-delay="500"
+                        href="#">
+                        <span class="my-6 grid h-24 w-24 place-items-center">
+                            <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="boostrap" class="mx-auto">
+                        </span>
+                    </a>
+                    <a class="grid w-full min-w-[7rem] transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25" data-aos="zoom-in" data-aos-delay="600"
+                        href="#">
+                        <span class="my-6 grid h-24 w-24 place-items-center">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-jquery-8-1175153.png?f=webp" alt="jquery" class="mx-auto">
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact -->
-    <section id="contact" class="pt-36 pb-32">
+    <section id="contact" class="pt-36 pb-32 bg-slate-100">
         <div class="container">
             <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
                 <div class="max-w-xl mx-auto text-center mb-16">
@@ -383,20 +437,41 @@
                     <form method="post" action="{{ route('message.store') }}">
                         @csrf
                         <label for="name" class="text-base font-bold text-primary">Name</label>
-                        <input type="text" name="name" id="name"
-                            class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 mb-3" />
+                        <input type="text" name="name" id="name" @guest
+                            disabled
+                        @endguest
+                            class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 mb-3 @guest
+                                hover:cursor-not-allowed
+                            @endguest" />
                         <label for="email" class="text-base font-bold text-primary">Email</label>
-                        <input type="email" name="email" id="email"
-                            class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 mb-3" />
+                        <input type="email" name="email" id="email" @guest
+                        disabled
+                    @endguest
+                            class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 mb-3 @guest
+                                hover:cursor-not-allowed
+                            @endguest" />
                         <label for="pesan" class="text-base font-bold text-primary">Message</label>
-                        <textarea name="message" id="pesan"
-                            class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 h-32 mb-3"></textarea>
+                        <textarea name="message" id="pesan" @guest
+                        disabled
+                    @endguest
+                            class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 h-32 mb-3 @guest
+                                hover:cursor-not-allowed
+                            @endguest"></textarea>
                         <div class="w-full px-4">
-                            <button
-                                type="submit"
-                                class="text-white bg-primary py-3 fo font-semibold text-base px-4 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500">
+                            <button type="submit"
+                                class="text-white bg-primary py-3 fo font-semibold text-base px-4 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500 @guest
+                                    hidden
+                                @endguest">
                                 Kirim
                             </button>
+                            @guest
+                            <div class="bg-yellow-100 text-dark px-4 py-5 rounded relative" role="alert">
+                                <strong class="font-bold">Perhatian!</strong>
+                                <span class="block sm:inline">Anda harus login terlebih dahulu untuk dapat mengakses fitur ini <a
+                                        href="{{ route('login.index') }}"
+                                        class="font-bold text-blue-400 underline">Login</a></span>
+                            </div>
+                            @endguest
                         </div>
                     </form>
                 </div>
@@ -418,21 +493,16 @@
                 <div class="w-full px-4 mb-12 md:w-1/3">
                     <h3 class="font-semibold text-xl text-white mb-5">Kategori</h3>
                     <ul class="text-slate-300">
+                        @if ($categories->isEmpty())
                         <li>
-                            <a href="#" class="inline-block text-base hover:text-primary mb-3">Progaming</a>
+                            <a href="#" class="inline-block text-xs hover:text-primary mb-3">Tidak ada category saat ini</a>
                         </li>
+                        @endif
+                        @foreach ($categories as $category )
                         <li>
-                            <a href="#" class="inline-block text-base hover:text-primary mb-3">tegnology</a>
+                            <a href="#" class="inline-block text-base hover:text-primary mb-3">{{ $category->name_category }}</a>
                         </li>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-primary mb-3">kesehatan</a>
-                        </li>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-primary mb-3">Ngopi</a>
-                        </li>
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-primary mb-3">Info</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="w-full px-4 mb-12 md:w-1/3">
@@ -515,7 +585,13 @@
             </div>
         </div>
     </footer>
-    @include('asset.js.SwitchAlerts.cdnScript')
+    <script>
+        AOS.init();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('dist/js/script.js') }}"></script>
+    <script src="{{ asset('js/crud file script/scriptCrud.js') }}"></script>
+    @include('asset.js.SwitchAlerts.switchAlerts')
 </body>
 
 </html>

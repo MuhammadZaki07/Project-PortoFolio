@@ -15,3 +15,7 @@
 </div>
 </div>
 @endsection
+@section('script')
+@include('asset.js.SwitchAlerts.switchAlerts')
+<script src="{{ asset('js/crud file script/scriptCrud.js') }}"></script>
+@endsection

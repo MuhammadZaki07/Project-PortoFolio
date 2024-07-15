@@ -157,9 +157,21 @@ class UsersController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        Storage::disk('public')->delete($user->profile_images);
+        if ($user->profile_image)
+        {
+            Storage::disk('public')->delete($user->profile_images);
+        }
         $user->delete();
 
-        return redirect()->route('Users.index')->with('success', 'User deleted successfully');
+        return redirect()->route('layouts.maintable.Users')->with('success', 'User deleted successfully');
+    }
+
+    public function search(Request $request){
+        if($request->ajax()){
+            $query = $request->input('search');
+            $users = User::where('name','like','%' . $query . '%')
+            ->orWhere('email', 'like', '%' . $query . '%')->get();
+            return view('admin.users.partials.index', compact('users'));
+        }
     }
 }

@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{{ asset('dist/img/logo.png') }}">
     <title>Post | {{ $posts->slug }}</title>
-    @include('asset.js.postAsset.cdnPostsView')
+    @include('asset.css.mainAsset.styleIndex')
 </head>
 
 <body>
@@ -26,8 +26,8 @@
                 <div>
                     <p class="text-dark text-xs font-bold xl:text-sm lg:text-lg">{{ $posts->user->name }}
                         @if ($posts->user->isAdmin())
-                         <i class="bi bi-patch-check-fill text-lg text-blue-500"></i>
-                         @endif
+                            <i class="bi bi-patch-check-fill text-lg text-blue-500"></i>
+                        @endif
                     </p>
                     <p class="text-xs text-gray-400">{{ $posts->created_at->diffForHumans() }}</p>
                 </div>
@@ -40,16 +40,17 @@
             <hr class="my-10">
             <div class="container">
                 @guest
-                <div class="bg-yellow-100 text-dark px-4 py-5 rounded relative" role="alert">
-                    <strong class="font-bold">Perhatian!</strong>
-                    <span class="block sm:inline">Anda harus login terlebih dahulu untuk dapat mengakses fitur ini <a href="{{ route('login.index') }}" class="font-bold text-blue-400 underline">Login</a>.</span>
-                </div>
+                    <div class="bg-yellow-100 text-dark px-4 py-5 rounded relative" role="alert">
+                        <strong class="font-bold">Perhatian!</strong>
+                        <span class="block sm:inline">Anda harus login terlebih dahulu untuk dapat mengakses fitur ini <a
+                                href="{{ route('login.index') }}"
+                                class="font-bold text-blue-400 underline">Login</a>.</span>
+                    </div>
                 @endguest
-                <div class="mt-8 @guest
-                hidden
-                @endguest">
+                <div class="mt-8 @guest hidden @endguest">
                     <h3 class="text-xl font-bold mb-4">Tambah Komentar</h3>
-                    <form action="{{ route('create.comment', ['slug' => $posts->slug]) }}" method="POST" class="space-y-4">
+                    <form action="{{ route('create.comment', ['slug' => $posts->slug]) }}" method="POST"
+                        class="space-y-4">
                         @csrf
                         <input type="hidden" name="post_id" value="{{ $posts->id }}">
                         <input type="hidden" name="user_id" value="{{ $posts->user->id }}">
@@ -84,8 +85,9 @@
                                         <div>
                                             <p class="text-dark font-semibold">{{ $comment->user->name }}
                                                 @if ($comment->user->isAdmin())
-                                                <i class="bi bi-patch-check-fill text-lg text-blue-500"></i>
-                                                @endif</p>
+                                                    <i class="bi bi-patch-check-fill text-lg text-blue-500"></i>
+                                                @endif
+                                            </p>
                                             <p class="text-xs text-gray-400">
                                                 {{ $comment->created_at->diffForHumans() }}</p>
                                         </div>
@@ -97,7 +99,8 @@
                                         <button type="button" class="like-button">
                                             <i class="fa-solid fa-heart"></i>
                                         </button>
-                                        <span class="like-count ml-1 text-black text-xs">{{ $comment->likes->count() }}</span>
+                                        <span
+                                            class="like-count ml-1 text-black text-xs">{{ $comment->likes->count() }}</span>
                                     </form>
                                 </div>
                                 <p class="text-gray-700">{{ $comment->content }}</p>
@@ -109,7 +112,9 @@
             </div>
         </div>
     </div>
-    @include('asset.js.SwitchAlerts.cdnScript')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/like file script/like.js') }}"></script>
+    @include('asset.js.SwitchAlerts.switchAlerts')
 </body>
 
 </html>

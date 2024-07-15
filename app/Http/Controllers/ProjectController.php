@@ -137,4 +137,13 @@ class ProjectController extends Controller implements HasMiddleware
         $project->delete();
         return redirect()->route('project.show')->with('success', 'Project deleted successfully!!');
     }
+
+
+    public function search(Request $request){
+        if($request->ajax()){
+            $query = $request->input('search');
+            $projects = Project::where('name_project', 'like' , '%' . $query . '%')->get();
+            return view('admin.project.partials.index', compact('projects'));
+        }
+    }
 }

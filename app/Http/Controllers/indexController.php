@@ -14,7 +14,8 @@ class indexController extends Controller
     public function index(){
         $projects = Project::latest()->take(2)->get();
         $posts = Post::oldest()->take(2)->with('user')->get();
-        return view('index', compact('projects', 'posts'));
+        $categories = Category::all();
+        return view('index', compact('projects', 'posts','categories'));
     }
 
 
@@ -25,13 +26,13 @@ class indexController extends Controller
     }
 
     public function show_project__(){
-        $projects = Project::all();
+        $projects = Project::paginate(6);
         $categories = Category::all();
         return view('page_blog_project.project', compact('projects','categories'));
     }
 
     public function show_blog__(){
-        $posts = Post::all();
+        $posts = Post::paginate(6);
         $categories = Category::all();
         return view('page_blog_project.blog', compact('posts','categories'));
     }

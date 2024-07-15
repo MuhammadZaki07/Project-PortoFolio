@@ -10,10 +10,16 @@ use Illuminate\Support\Facades\Mail;
 
 class MessageController extends Controller
 {
-    // public function index()
-    // {
-    //     return view('emails.emailMessage');
-    // }
+    public function index()
+    {
+        $messages = Message::all();
+        return view('admin.messages.tabel', compact('messages'));
+    }
+
+    public function view($id){
+        $message = Message::findOrFail($id);
+        return view('admin.messages.view', compact('message'));
+    }
 
     public function store(Request $request)
     {

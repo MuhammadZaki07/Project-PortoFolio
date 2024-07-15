@@ -1,23 +1,11 @@
 @extends('layouts.maintable')
 @section('child-content')
-<div class="mb-4 flex justify-between items-center">
-    <form method="POST" class="flex">
-        @csrf
-        <input type="text" name="search" placeholder="Search..." class="px-4 py-2 border rounded-lg">
-    </form>
-    <div class="relative">
-        <button onclick="toggleDropdown()" class="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300">
-            <i class="fas fa-filter"></i> Filter
-        </button>
-        <div id="dropdownMenu" class="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg hidden">
-            <div class="py-2">
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Size</a>
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Name</a>
-                <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Sort by Date</a>
-            </div>
-        </div>
+    <div class="mb-4 flex justify-between items-center">
+        <form method="POST" id="search-form" action="{{ route('users.search') }}" class="flex">
+            @csrf
+            <input type="text" id="search" name="search" placeholder="Search..." class="px-4 py-2 border rounded-lg">
+        </form>
     </div>
-</div>
     <div class="container mx-auto p-4">
         <div class="bg-white shadow-lg rounded-lg p-6">
             <h2 class="text-xl font-semibold mb-4">Data Users</h2>
@@ -34,61 +22,8 @@
                             <th class="px-4 py-2 text-center">Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-
-                        @foreach ($users as $user)
-                            <tr>
-                                <td class="text-xs px-2 py-1 text-center">{{ $loop->iteration }}</td>
-                                <td class="text-xs px-2 py-1 text-center">
-                                    <img src="{{ $user->profile_image ? asset('storage/' . $user->profile_image) : asset('dist/img/iconsUsers.jpg') }}"
-                                        alt="Avatar" class="rounded-full h-10 w-10 border border-red-500 mr-2">
-                                </td>
-                                <td class="text-xs px-2 py-1">{{ $user->name }}
-                                    @if ($user->isAdmin())
-                                    <i class="bi bi-patch-check-fill text-sm text-blue-500"></i>
-                                    @endif</td>
-                                <td class="text-xs px-2 py-1">{{ $user->email }}</td>
-                                <td class="text-xs px-2 py-1">{{ $user->school }}</td>
-                                <td class="text-xs px-2 py-1 text-center">
-                                    @if ($user->role == 'admin')
-                                        <span class="w-10 h-5 bg-green-500 px-2 py-1 shadow-lg text-sm text-white rounded-lg">
-                                            {{ $user->role }}
-                                        </span>
-                                    @else
-                                        <span class="w-10 h-5 bg-red-500 px-2 py-1 shadow-lg text-sm text-white rounded-lg">
-                                            {{ $user->role }}
-                                        </span>
-                                    @endif
-                                </td>
-                                <td class="text-xs px-2 py-1 text-center">
-                                    <div class="flex space-x-2">
-                                        @if ($user->role == 'admin')
-                                            <a href="#" data-user-id="{{ $user->id }}"
-                                                class="viewUserBtn text-dark hover:text-white hover:bg-blue-700 bg-blue-400 px-4 py-3 rounded-xl shadow-lg"><i
-                                                    class="fas fa-eye"></i></a>
-                                            <a href="{{ route('Users.edit', $user->id) }}"
-                                                class="text-dark hover:text-white bg-orange-400 hover:bg-orange-700 px-4 py-3 rounded-xl shadow-lg"><i
-                                                    class="fas fa-edit"></i></a>
-                                        @else
-                                            <a href="#" data-user-id="{{ $user->id }}"
-                                                class="viewUserBtn text-dark hover:text-white hover:bg-blue-700 bg-blue-400 px-4 py-3 rounded-xl shadow-lg"><i
-                                                    class="fas fa-eye"></i></a>
-                                            <a href="{{ route('Users.edit', $user->id) }}"
-                                                class="text-dark hover:text-white bg-orange-400 hover:bg-orange-700 px-4 py-3 rounded-xl shadow-lg"><i
-                                                    class="fas fa-edit"></i></a>
-                                            <form id="delete-user"
-                                                action="{{ route('Users.destroy', $user->id) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button onclick="confirmDelete()" type="button"
-                                                    class="text-dark hover:text-white bg-red-600 px-4 hover:bg-red-700 py-3 rounded-xl shadow-lg"><i
-                                                        class="fas fa-trash"></i></button>
-                                            </form>
-                                        @endif
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                    <tbody id="users-results">
+                        @include('admin.users.partials.index', ['users' => $users])
                     </tbody>
                 </table>
             </div>
@@ -156,6 +91,9 @@
             </div>
         </div>
     </div>
-
-    @include('asset.js.assetAdmin.AssetJS')
+@endsection
+@section('script')
+    <script src="{{ asset('js/crud file script/scriptCrud.js') }}"></script>
+    <script src="{{ asset('js/modal file script/modal.js') }}"></script>
+    <script src="{{ asset('js/ajax file script/ajax.js') }}"></script>
 @endsection

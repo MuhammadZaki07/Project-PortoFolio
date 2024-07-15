@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Support\Str;
@@ -27,7 +28,7 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $categories = Category::all();
-        return view('admin.post.form', compact('user','categories'));
+        return view('admin.post.form', compact('user', 'categories'));
     }
 
     /**
@@ -64,10 +65,10 @@ class PostController extends Controller
      * Display the specified resource.
      */
     public function show($slug)
-{
-    $post = Post::where('slug', $slug)->with('user')->firstOrFail();
-    return view('admin.post.views', compact('post'));
-}
+    {
+        $post = Post::where('slug', $slug)->with('user')->firstOrFail();
+        return view('admin.post.views', compact('post'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -76,38 +77,38 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $categories = Category::all();
-        return view('admin.post.edit', compact('post','categories'));
+        return view('admin.post.edit', compact('post', 'categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-{
-    $post = Post::findOrFail($id);
+    {
+        $post = Post::findOrFail($id);
 
-    $request->validate([
-        'category' => 'required|exists:category,id_category',
-        'title' => 'string|max:150|required',
-        'slug' => 'string|required|max:150',
-        'image_post' => 'mimes:png,jpg,jpeg|file|max:2000',
-        'content' => 'required|string'
-    ]);
+        $request->validate([
+            'category' => 'required|exists:category,id_category',
+            'title' => 'string|max:150|required',
+            'slug' => 'string|required|max:150',
+            'image_post' => 'mimes:png,jpg,jpeg|file|max:2000',
+            'content' => 'required|string'
+        ]);
 
-    if ($path = $request->file('image_post')?->storePublicly('post', 'public')) {
-        Storage::disk('public')->delete($post->image);
-        $post->image = $path;
+        if ($path = $request->file('image_post')?->storePublicly('post', 'public')) {
+            Storage::disk('public')->delete($post->image);
+            $post->image = $path;
+        }
+
+        $post->user_id = Auth::id();
+        $post->id_category = $request->category;
+        $post->title = $request->title;
+        $post->slug = $request->slug;
+        $post->content = $request->content;
+        $post->save();
+
+        return redirect()->route('layouts.maintable')->with('success', 'Post Success Update!!!');
     }
-
-    $post->user_id = Auth::id();
-    $post->id_category = $request->category;
-    $post->title = $request->title;
-    $post->slug = $request->slug;
-    $post->content = $request->content;
-    $post->save();
-
-    return redirect()->route('layouts.maintable')->with('success', 'Post Success Update!!!');
-}
 
 
 
@@ -130,5 +131,17 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('blog.show')->with('success', 'Data berhasil dihapus!');
+    }
+
+
+    public function search(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = $request->input('search');
+            $posts = Post::where('title', 'like', '%' . $query . '%')
+                ->orWhere('content', 'like', '%' . $query . '%')
+                ->get();
+            return view('admin.post.partials.posts', compact('posts'))->render();
+        }
     }
 }

@@ -450,8 +450,6 @@
 </head>
 
 <body>
-    <span class="preheader">Thanks for trying out [Product Name]. We’ve pulled together some information and resources
-        to help you get started.</span>
     <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
         <tr>
             <td align="center">
@@ -459,7 +457,7 @@
                     <tr>
                         <td class="email-masthead">
                             <a href="https://example.com" class="f-fallback email-masthead_name">
-                                [Product Name]
+                                Devcode.Id
                             </a>
                         </td>
                     </tr>
@@ -472,100 +470,29 @@
                                 <tr>
                                     <td class="content-cell">
                                         <div class="f-fallback">
-                                            <h1>Welcome, !</h1>
-                                            <p>Thanks for trying [Product Name]. We’re thrilled to have you on board. To
-                                                get the most out of [Product Name], do this primary next step:</p>
-                                            <!-- Action -->
-                                            <table class="body-action" align="center" width="100%" cellpadding="0"
-                                                cellspacing="0" role="presentation">
-                                                <tr>
-                                                    <td align="center">
-                                                        <!-- Border based button
-           https://litmus.com/blog/a-guide-to-bulletproof-buttons-in-email-design -->
-                                                        <table width="100%" border="0" cellspacing="0"
-                                                            cellpadding="0" role="presentation">
-                                                            <tr>
-                                                                <td align="center">
-                                                                    <a href=""
-                                                                        class="f-fallback button" target="_blank">Do
-                                                                        this Next</a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <p>For reference, here's your login information:</p>
-                                            <table class="attributes" width="100%" cellpadding="0" cellspacing="0"
-                                                role="presentation">
-                                                <tr>
-                                                    <td class="attributes_content">
-                                                        <table width="100%" cellpadding="0" cellspacing="0"
-                                                            role="presentation">
-                                                            <tr>
-                                                                <td class="attributes_item">
-                                                                    <span class="f-fallback">
-                                                                        <strong>Login Page:</strong> login_url
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="attributes_item">
-                                                                    <span class="f-fallback">
-                                                                        <strong>Username:</strong> username
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <p>You've started a  trial_length  day trial. You can upgrade to a
-                                                paying account or cancel any time.</p>
-                                            <table class="attributes" width="100%" cellpadding="0" cellspacing="0"
-                                                role="presentation">
-                                                <tr>
-                                                    <td class="attributes_content">
-                                                        <table width="100%" cellpadding="0" cellspacing="0"
-                                                            role="presentation">
-                                                            <tr>
-                                                                <td class="attributes_item">
-                                                                    <span class="f-fallback">
-                                                                        <strong>Trial Start Date:</strong>
-                                                                        {{ trial_start_date }}
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="attributes_item">
-                                                                    <span class="f-fallback">
-                                                                        <strong>Trial End Date:</strong>
-                                                                        {{ trial_end_date }}
-                                                                    </span>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                            <p>If you have any questions, feel free to <a
-                                                    href="mailto:{{ support_email }}">email our customer success
-                                                    team</a>. (We're lightning quick at replying.) We also offer <a
-                                                    href="{{ live_chat_url }}">live chat</a> during business hours.</p>
-                                            <p>Thanks,
-                                                <br>[Sender Name] and the [Product Name] team
+                                            <h1>Haii,{{ $name }}!!!</h1>
+                                            <p>
+                                                Selamat datang di situs Devcode.Id!!
                                             </p>
-                                            <p><strong>P.S.</strong> Need immediate help getting started? Check out our
-                                                <a href="{{ help_url }}">help documentation</a>. Or, just reply to
-                                                this email, the [Product Name] support team is always ready to help!</p>
-                                            <!-- Sub copy -->
                                             <table class="body-sub" role="presentation">
                                                 <tr>
                                                     <td>
-                                                        <p class="f-fallback sub">If you’re having trouble with the
-                                                            button above, copy and paste the URL below into your web
-                                                            browser.</p>
-                                                        <p class="f-fallback sub">{{ action_url }}</p>
+                                                        <p>
+                                                            Kami sangat senang menyambut Anda sebagai anggota baru di
+                                                            komunitas
+                                                            kami. Terima kasih telah mendaftar dan bergabung dengan
+                                                            kami.
+                                                            Kami
+                                                            berharap Anda menikmati pengalaman Anda dan menemukan banyak
+                                                            manfaat
+                                                            dari layanan yang kami sediakan.
+                                                            Jika Anda memiliki pertanyaan atau memerlukan bantuan,
+                                                            jangan
+                                                            ragu untuk
+                                                            menghubungi tim dukungan kami di devcodeid1@gamil.com
+                                                            Selamat berselancar dan semoga hari Anda menyenangkan!
+                                                            Salam hangat.
+                                                        </p>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -577,14 +504,14 @@
                     </tr>
                     <tr>
                         <td>
-                            <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0"
-                                role="presentation">
+                            <table class="email-footer body-sub" align="center" width="570" cellpadding="0"
+                                cellspacing="0" role="presentation">
                                 <tr>
                                     <td class="content-cell" align="center">
                                         <p class="f-fallback sub align-center">
-                                            [Company Name, LLC]
-                                            <br>1234 Street Rd.
-                                            <br>Suite 1234
+                                            DevCode.Id
+                                            <br>5 Landungsari
+                                            <br>Indonesia
                                         </p>
                                     </td>
                                 </tr>
