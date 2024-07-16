@@ -7,9 +7,9 @@
                 <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
                     <thead class="bg-gray-200">
                         <tr>
-                            <th class="px-4 py-2 text-center">No</th>
-                            <th class="px-4 py-2 text-center">Category</th>
-                            <th class="px-4 py-2 text-center">Actions</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">No</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Category</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Actions</th>
                         </tr>
                     </thead>
                     <tbody>

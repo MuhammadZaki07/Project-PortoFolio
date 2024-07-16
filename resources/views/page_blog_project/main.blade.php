@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth" id="html">
 
 <head>
     <meta charset="UTF-8">
@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </nav>
-        <header class="py-20 text-center text-white">
+        <div class="py-20 text-center text-white">
             <div class="container mx-auto px-4">
                 @if (Auth::check())
                     <h1 class="xl:text-5xl lg:text-5xl sm:text-3xl font-bold mb-4">👋Haii! Selamat datang
@@ -45,10 +45,10 @@
 
                 <p class="mt-2 xl:text-lg sm:text-sm">Cooding, Ibadah, Olahraga, Success</p>
             </div>
-        </header>
+        </div>
     </div>
     <!-- Projects Section -->
-    <section class="py-10 shadow-inner bg-slate-100">
+    <section class="py-10 shadow-inner bg-slate-100 dark:bg-dark">
         <div class="container mx-auto px-4 py-5">
             @yield('img-null')
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -61,12 +61,12 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="bg-gray-200 py-16">
+    <section class="bg-gray-200 py-16 dark:bg-dark">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-8 text-center">@yield('form-title')</h2>
+            <h2 class="text-4xl font-bold mb-8 text-center dark:text-primary">@yield('form-title')</h2>
             <div class="max-w-md mx-auto">
                 @yield('content-2')
-                <p class="mt-4 text-center">My Email<a target=_blank" href="https://veilmail.io/muhammad_zaki_ulumuddin"
+                <p class="mt-4 text-center dark:text-primary">My Email<a target=_blank" href="https://veilmail.io/muhammad_zaki_ulumuddin"
                         class="text-blue-600 font-bold hover:underline"> https://veilmail.io/muhammad_zaki_ulumuddin</a>
                 </p>
             </div>
@@ -79,7 +79,24 @@
             <p>&copy; 2024 DevcodeId. All rights reserved. Designed with by muhmamad zaki ulumuddin</p>
         </div>
     </footer>
+    <div class="relative bg-white dark:bg-slate-900 pattern">
+        <nav
+            class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white p-2.5 shadow-lg fixed top-2/4 -translate-y-2/4 right-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border">
+            <span id="light"
+                class="flex aspect-square hover:cursor-pointer min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-white dark:border-opacity-0 border border-solid border-dark text-dark dark:bg-slate-100 hover:border-opacity-100 dark:text-slate-400">
+                <i class="bi bi-lightbulb-fill"></i>
+                <small class="text-center text-xs font-medium"> light </small>
+            </span>
+
+            <span id="dark"
+                class="flex aspect-square hover:cursor-pointer min-h-[32px] w-16 flex-col items-center justify-center gap-1 bg-white rounded-md p-1.5 text-gray-700 dark:bg-slate-800 hover:bg-gray-100 dark:text-primary dark:hover:bg-slate-800">
+                <i class="bi bi-moon-stars-fill"></i>
+                <small class="text-center text-xs font-medium"> dark </small>
+            </span>
+        </nav>
+    </div>
     @include('asset.js.SwitchAlerts.switchAlerts')
+    <script src="{{ asset('dist/js/script.js') }}"></script>
     <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 </body>

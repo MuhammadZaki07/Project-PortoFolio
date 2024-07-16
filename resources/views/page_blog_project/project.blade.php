@@ -19,10 +19,10 @@
                     class="w-full h-64 object-cover transform transition duration-500 group-hover:scale-110 hover:shadow-xl hover:rounded-lg">
             </a>
             <div class="p-5">
-                <h3 class="text-2xl font-bold mb-2">{{ $project->name_project }}</h3>
+                <h3 class="text-2xl font-bold mb-2 dark:text-primary">{{ $project->name_project }}</h3>
                 <h3 class="text-xs font-semibold text-slate-400 mb-2">Category : {{ $project->category->name_category }}
                 </h3>
-                <div class="text-gray-700">{!! Str::words($project->description_project, 10) !!}</div>
+                <div class="text-gray-700 dark:text-white">{!! Str::words($project->description_project, 10) !!}</div>
                 <div class="flex space-x-2 justify-start mt-5">
                     <a href="{{ $project->url_project }}"
                         class="text-dark hover:text-white hover:bg-blue-700 font-semibold bg-blue-400 px-4 py-3 rounded-xl shadow-lg">
@@ -79,7 +79,7 @@
                         @foreach ($element as $page => $url)
                             @if ($page == $projects->currentPage())
                                 <li aria-current="page">
-                                    <span class="mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-red-500 p-0 text-sm text-white shadow-md transition duration-150 ease-in-out">{{ $page }}</span>
+                                    <span class="mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-red-500 p-0 text-sm text-white dark:text-primary dark:bg-primary shadow-md transition duration-150 ease-in-out">{{ $page }}</span>
                                 </li>
                             @else
                                 <li>
@@ -117,24 +117,24 @@
     <form action="{{ route('message.store') }}" method="post" class="space-y-4">
         @csrf
         <div>
-            <label for="name" class="block font-bold mb-2">Your Name</label>
+            <label for="name" class="block font-bold mb-2 dark:text-primary">Your Name</label>
             <input type="text" id="name" name="name"
-                class="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
+                class="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 dark:focus:border-primary"
                 placeholder="Enter your name">
         </div>
         <div>
-            <label for="email" class="block font-bold mb-2">Your Email</label>
+            <label for="email" class="block font-bold mb-2 dark:text-primary">Your Email</label>
             <input type="email" id="email" name="email"
-                class="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
+                class="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 dark:focus:border-primary"
                 placeholder="Enter your email">
         </div>
         <div>
-            <label for="message" class="block font-bold mb-2">Your Message</label>
+            <label for="message" class="block font-bold mb-2 dark:text-primary">Your Message</label>
             <textarea name="message" id="message" rows="4"
-                class="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
+                class="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500 dark:focus:border-primary"
                 placeholder="Enter your message"></textarea>
         </div>
         <button type="submit"
-            class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">Submit</button>
+            class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300 dark:bg-primary">Submit</button>
     </form>
 @endsection

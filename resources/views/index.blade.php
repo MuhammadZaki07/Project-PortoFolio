@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth transition-all  duration-200" id="html">
 
 <head>
     <meta charset="UTF-8" />
@@ -23,28 +23,33 @@
                 <div class="flex items-center">
                     <button id="hamburger" class="block lg:hidden focus:outline-none">
                         <span
-                            class="hamburger-line block w-6 h-0.5 bg-black mb-1 transition-transform duration-300"></span>
+                            class="hamburger-line block w-6 h-0.5 bg-black mb-1 transition-transform duration-300 dark:bg-white"></span>
                         <span
-                            class="hamburger-line block w-6 h-0.5 bg-black mb-1 transition-transform duration-300"></span>
-                        <span class="hamburger-line block w-6 h-0.5 bg-black transition-transform duration-300"></span>
+                            class="hamburger-line block w-6 h-0.5 bg-black mb-1 transition-transform duration-300 dark:bg-white"></span>
+                        <span class="hamburger-line block w-6 h-0.5 bg-black transition-transform duration-300 dark:bg-white"></span>
                     </button>
                     <nav id="nav-menu"
                         class="hidden lg:flex lg:items-center lg:static lg:bg-transparent lg:shadow-none lg:rounded-none lg:max-w-full absolute top-full right-4 bg-white shadow-lg rounded-lg max-w-[250px] w-full py-5 lg:py-0 lg:w-auto">
                         <ul class="block lg:flex">
                             <li class="group"><a href="#home"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Beranda</a></li>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-slate-600">Beranda</a>
+                            </li>
                             <li class="group"><a href="#about"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Tentang Saya</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-slate-600">Tentang
+                                    Saya</a>
                             </li>
                             <li class="group"><a href="{{ route('project.show') }}"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Portofolio</a>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-slate-600">Portofolio</a>
                             </li>
                             <li class="group"><a href="#clients"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Clients</a></li>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-slate-600">Clients</a>
+                            </li>
                             <li class="group"><a href="{{ route('blog.show') }}"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Blog</a></li>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-slate-600">Blog</a>
+                            </li>
                             <li class="group"><a href="#contact"
-                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary">Contact</a></li>
+                                    class="text-base text-dark py-2 mx-8 flex group-hover:text-primary dark:text-slate-600">Contact</a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="relative ml-4">
@@ -57,22 +62,22 @@
                             @if (Auth::check())
                                 <form action="{{ route('logout') }}" id="logout-form" method="POST">
                                     @csrf
-                                    <div class="group hover:bg-red-400 rounded-t-lg overflow-hidden">
+                                    <div class="group hover:bg-red-400 rounded-t-lg overflow-hidden dark:hover:bg-primary">
                                         <a href="{{ Auth::user()->role == 'admin' ? route('admin.dashboard') : route('Users.edit', ['id' => Auth::user()->id]) }}"
-                                            class="text-red-500 group-hover:opacity-100 font-semibold block py-3 px-5 group-hover:text-white text-base hover:opacity-70 transition duration-500 ease-in-out">
+                                            class="text-red-500 group-hover:opacity-100 font-semibold block py-3 px-5 group-hover:text-white text-base hover:opacity-70 transition duration-500 ease-in-out dark:text-primary">
                                             Dashboard
                                         </a>
                                     </div>
-                                    <div class="group rounded-b-lg overflow-hidden hover:bg-red-400">
+                                    <div class="group rounded-b-lg overflow-hidden hover:bg-red-400 dark:hover:bg-primary">
                                         <button
-                                            class="text-red-500 font-semibold py-3 px-5 group-hover:opacity-100 group-hover:text-white text-bas hover:opacity-70 transition duration-500 ease-in-out"
+                                            class="text-red-500 font-semibold py-3 px-5 group-hover:opacity-100 group-hover:text-white text-bas hover:opacity-70 transition duration-500 ease-in-out dark:text-primary"
                                             type="button" onclick="confirmLogout()">Logout</button>
                                     </div>
                                 </form>
                             @else
-                                <div class="group hover:bg-red-400 rounded-lg overflow-hidden">
+                                <div class="group hover:bg-red-400 rounded-lg overflow-hidden dark:hover:bg-primary">
                                     <a href="{{ route('login') }}"
-                                        class="text-red-500 group-hover:opacity-100 font-semibold block py-3 px-5 group-hover:text-white text-bas hover:opacity-70 transition duration-100 ease-in-out">Login</a>
+                                        class="text-red-500 group-hover:opacity-100 font-semibold block py-3 px-5 group-hover:text-white text-bas hover:opacity-70 transition duration-100 ease-in-out dark:text-primary">Login</a>
                                 </div>
                             @endif
                         </div>
@@ -85,20 +90,21 @@
     <!-- header End -->
 
     <!-- Hero Section Start -->
-    <section id="home" class="pt-20">
+    <section id="home" class="pt-20 dark:bg-dark">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full self-center px-4 lg:w-1/2" data-aos="fade-right" data-aos-easing="ease-in-out">
-                    <h1 class="text-base font-semibold text-primary md:text-xl">
+                    <h1 class="text-base font-semibold text-primary md:text-xl dark:text-primary">
                         Halo Semua👋,Saya
-                        <span class="block font-bold text-dark text-3xl lg:text-5xl">Muhammad Zaki Ulumuddin</span>
+                        <span class="block font-bold text-dark text-3xl lg:text-5xl dark:text-white">Muhammad Zaki
+                            Ulumuddin</span>
                     </h1>
-                    <h2 class="font-medium text-secondary text-lg mb-5 lg:text-2xl">
-                        Student | <span class="text-dark">Web Devoloper</span>
+                    <h2 class="font-medium text-secondary text-lg mb-5 lg:text-2xl dark:text-primary">
+                        Student | <span class="text-dark dark:text-primary">Web Devoloper</span>
                     </h2>
-                    <p class="font-medium text-secondary mb-10 leading-relaxed">
+                    <p class="font-medium text-secondary mb-10 leading-relaxed dark:text-white">
                         Ngoding Itu Enak Lho!!, apaalagi Kalo ada
-                        <span class="text-red-600 font-bold">Error</span> hehe.. Maaf kalo
+                        <span class="text-red-600 dark:text-red-500 font-bold">Error</span> hehe.. Maaf kalo
                         Gjls
                     </p>
 
@@ -125,17 +131,17 @@
     <!-- Hero Section End -->
 
     <!-- Section About Start -->
-    <section id="about" class="pt-36 pb-32">
+    <section id="about" class="pt-36 pb-32 dark:bg-dark">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full px-4 mb-10 lg:w-1/2" data-aos="fade-up" data-aos-delay="300">
-                    <h4 class="font-bold uppercase text-primary text-lg mb-3">
+                    <h4 class="font-bold uppercase text-primary text-lg mb-3 ">
                         Tentang Saya
                     </h4>
-                    <h2 class="font-bold text-dark text-3xl mb-5 max-w-md mx-w-xl lg:text-4xl">
-                        Muhammad Zaki U.
+                    <h2 class="font-bold text-dark text-3xl mb-5 max-w-md mx-w-xl lg:text-4xl dark:text-primary">
+                        Muhammad Zaki U
                     </h2>
-                    <p class="font-medium text-base text-secondary lg:text-lg">
+                    <p class="font-medium text-base text-secondary lg:text-lg dark:text-slate-100">
                         Saya adalah seorang pelajar di SMK PGRI 3 Kota Malang, jurusan Rekayasa Perangkat Lunak. Sejak
                         SMP, saya suka dengan dunia pemrograman. Saat ini saya berusia 16 tahun, saya bercita-cita
                         menjadi seorang full stack developer. Selain itu, saya juga seorang anak tunggal yang memiliki
@@ -143,10 +149,10 @@
                     </p>
                 </div>
                 <div class="w-full px-4 lg:w-1/2" data-aos="fade-up" data-aos-delay="500">
-                    <h3 class="text-dark font-semibold text-2xl mb-4 lg:text-3xl lg:pt-10">
+                    <h3 class="text-dark font-semibold text-2xl mb-4 lg:text-3xl lg:pt-10 dark:text-primary">
                         Mari berteman
                     </h3>
-                    <p class="font-medium text-base text-secondary mb-6 lg:text-lg">
+                    <p class="font-medium text-base text-secondary mb-6 lg:text-lg dark:text-slate-200">
                         Saya percaya bahwa kolaborasi dan saling belajar adalah kunci untuk mencapai kesuksesan di dunia
                         teknologi. Mari kita bersama-sama menjelajahi dan mengembangkan potensi kita dalam pemrograman!
                     </p>
@@ -206,15 +212,15 @@
     <!-- Section About End -->
 
     <!-- Portofolio Start -->
-    <section id="portofolio" class="pt-36 pb-16 bg-slate-100">
+    <section id="portofolio" class="pt-36 pb-16 bg-slate-100 dark:bg-dark">
         <div class="container">
             <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Portofolio</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl">
+                    <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl dark:text-white">
                         Project Terbaru
                     </h2>
-                    <p class="font-medium text-secondary text-md md:text-lg">
+                    <p class="font-medium text-secondary text-md md:text-lg dark:text-slate-100">
                         Di bawah ini adalah beberapa proyek terbaru yang telah saya kerjakan. Saya selalu bersemangat
                         untuk menciptakan solusi kreatif menggunakan teknologi terbaru.
                     </p>
@@ -228,7 +234,7 @@
                 @foreach ($projects as $project)
                     <div class="mb-12 p-4 md:w-1/2" data-aos="zoom-in" data-aos-delay="300" data-aos-duration="500"
                         data-aos-easing="ease-in-out">
-                        <div class="rounded-md shadow-md overflow-hidden">
+                        <div class="rounded-md shadow-md overflow-hidden dark:shadow-lg dark:shadow-white">
                             <a href="{{ $project->url_project }}" target="_blank" class="group">
                                 <img src="{{ asset('storage/' . $project->thumnail_project) }}" width="w-full"
                                     alt="{{ $project->name_project }}"
@@ -237,13 +243,10 @@
                         </div>
                         <h3 class="font-semibold text-xl text-dark mt-5 mb-3">
                             <a href="{{ $project->url_project }}" target="_blank"
-                                class="hover:text-blue-400 hover:underline">
+                                class="hover:text-blue-400 hover:underline dark:text-white">
                                 {{ $project->name_project }}
                             </a>
                         </h3>
-                        <p class="font-medium text-base text-secondary md:text-lg">
-                            {!! $project->description_project !!}
-                        </p>
                         <div class="flex items-center mt-5">
                             <a href="{{ $project->url_youtube }}" target="_blank"
                                 class="w-9 h-9 mr-3 rounded-full flex justify-center items-center border border-slate-300 hover:border-primary hover:bg-primary hover:text-white text-slate-300">
@@ -323,15 +326,15 @@
     <!-- Client Section End -->
 
     <!-- Blog -->
-    <section id="blog" class="pt-36 pb-32 bg-slate-100">
+    <section id="blog" class="pt-36 pb-32 bg-slate-100 dark:bg-dark">
         <div class="container">
             <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Blog</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl">
+                    <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl dark:text-white">
                         Tulisan Terikini
                     </h2>
-                    <p class="font-medium text-secondary text-md md:text-lg">
+                    <p class="font-medium text-secondary text-md md:text-lg dark:text-slate-200">
                         Selamat datang di blog pribadi saya, tempat saya berbagi pengalaman, inspirasi, dan pengetahuan
                         seputar coding, desain web, dan eksplorasi teknologi digital lainnya. Mari kita jelajahi
                         bersama!
@@ -346,7 +349,7 @@
                 @foreach ($posts as $post)
                     <div class="w-full px-4 sm:w-1/2 lg:w-1/3" data-aos="zoom-in" data-aos-delay="300"
                         data-aos-duration="500" data-aos-easing="ease-in-out">
-                        <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
+                        <div class="bg-white rounded-xl overflow-hidden shadow-lg mb-10 dark:shadow-white">
                             <a href="{{ route('post.views', $post->slug) }}" class="group">
                                 <img src="{{ asset('storage/' . $post->image) }}"
                                     class=" w-full group-hover:scale-125 transition-all duration-500"
@@ -372,12 +375,12 @@
     </section>
     <!-- End Blog -->
 
-    <section class="pt-36 bg-white pb-10">
+    <section class="pt-36 bg-white pb-10 dark:bg-dark">
 
         <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
             <div class="max-w-xl mx-auto text-center">
                 <h4 class="font-semibold text-lg text-primary mb-2">Framework</h4>
-                <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl">
+                <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl dark:text-white">
                     Framework yang saya gunakan
                 </h2>
                 <p class="font-medium text-secondary text-md md:text-lg">
@@ -388,28 +391,32 @@
         <div class='flex items-center justify-center py-20'>
             <div>
                 <div class="mt-2 grid grid-cols-2 gap-10 md:grid-cols-4 sm:grid-cols-2" id="frameworks-integration">
-                    <a class="grid w-full min-w-[10rem] p-10 transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25" data-aos="zoom-in"
-                        href="https://laravel.com/" target="_blank">
+                    <a class="grid w-full min-w-[10rem] p-10 transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25"
+                        data-aos="zoom-in" href="https://laravel.com/" target="_blank">
                         <span class="my-6 grid h-24 w-24 place-items-center">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png" alt="" class="mx-auto">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png"
+                                alt="" class="mx-auto">
                         </span>
                     </a>
-                    <a class="grid w-full min-w-[7rem] transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25" data-aos="zoom-in" data-aos-delay="300"
-                        href="#">
+                    <a class="grid w-full min-w-[7rem] transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25"
+                        data-aos="zoom-in" data-aos-delay="300" href="#">
                         <span class="my-6 grid h-24 w-24 place-items-center">
-                            <img src="https://seeklogo.com/images/T/tailwind-css-logo-5AD4175897-seeklogo.com.png" alt="tailwindcss" class="mx-auto">
+                            <img src="https://seeklogo.com/images/T/tailwind-css-logo-5AD4175897-seeklogo.com.png"
+                                alt="tailwindcss" class="mx-auto">
                         </span>
                     </a>
-                    <a class="grid w-full min-w-[7rem] transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25" data-aos="zoom-in" data-aos-delay="500"
-                        href="#">
+                    <a class="grid w-full min-w-[7rem] transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25"
+                        data-aos="zoom-in" data-aos-delay="500" href="#">
                         <span class="my-6 grid h-24 w-24 place-items-center">
-                            <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png" alt="boostrap" class="mx-auto">
+                            <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png"
+                                alt="boostrap" class="mx-auto">
                         </span>
                     </a>
-                    <a class="grid w-full min-w-[7rem] transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25" data-aos="zoom-in" data-aos-delay="600"
-                        href="#">
+                    <a class="grid w-full min-w-[7rem] transform cursor-pointer place-items-center rounded-xl border border-blue-gray-50 bg-white px-3 py-2 transition-all hover:scale-105 hover:border-blue-gray-100 hover:bg-blue-gray-50 hover:bg-opacity-25"
+                        data-aos="zoom-in" data-aos-delay="600" href="#">
                         <span class="my-6 grid h-24 w-24 place-items-center">
-                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-jquery-8-1175153.png?f=webp" alt="jquery" class="mx-auto">
+                            <img src="https://cdn.iconscout.com/icon/free/png-256/free-jquery-8-1175153.png?f=webp"
+                                alt="jquery" class="mx-auto">
                         </span>
                     </a>
                 </div>
@@ -418,12 +425,12 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="pt-36 pb-32 bg-slate-100">
+    <section id="contact" class="pt-36 pb-32 bg-slate-100 dark:bg-dark">
         <div class="container">
             <div class="w-full px-4" data-aos="fade-down" data-aos-duration="700" data-aos-easing="ease-in-out">
                 <div class="max-w-xl mx-auto text-center mb-16">
                     <h4 class="font-semibold text-lg text-primary mb-2">Hubungi Saya</h4>
-                    <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl">
+                    <h2 class="font-bold text-dark text-3xl mb-4 lg:text-5xl sm:text-4xl dark:text-white">
                         Informasi Kontak
                     </h2>
                     <p class="font-medium text-secondary text-md md:text-lg">
@@ -438,39 +445,32 @@
                         @csrf
                         <label for="name" class="text-base font-bold text-primary">Name</label>
                         <input type="text" name="name" id="name" @guest
-                            disabled
-                        @endguest
+disabled @endguest
                             class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 mb-3 @guest
-                                hover:cursor-not-allowed
-                            @endguest" />
+hover:cursor-not-allowed @endguest" />
                         <label for="email" class="text-base font-bold text-primary">Email</label>
                         <input type="email" name="email" id="email" @guest
-                        disabled
-                    @endguest
+disabled @endguest
                             class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 mb-3 @guest
-                                hover:cursor-not-allowed
-                            @endguest" />
+hover:cursor-not-allowed @endguest" />
                         <label for="pesan" class="text-base font-bold text-primary">Message</label>
                         <textarea name="message" id="pesan" @guest
-                        disabled
-                    @endguest
+disabled @endguest
                             class="w-full bg-slate-200 text-dark p-3 rounded-md focus:outline-none focus:ring-primary focus:border-primary focus:ring-1 h-32 mb-3 @guest
-                                hover:cursor-not-allowed
-                            @endguest"></textarea>
+hover:cursor-not-allowed @endguest"></textarea>
                         <div class="w-full px-4">
                             <button type="submit"
                                 class="text-white bg-primary py-3 fo font-semibold text-base px-4 rounded-full w-full hover:opacity-80 hover:shadow-lg transition duration-500 @guest
-                                    hidden
-                                @endguest">
+hidden @endguest">
                                 Kirim
                             </button>
                             @guest
-                            <div class="bg-yellow-100 text-dark px-4 py-5 rounded relative" role="alert">
-                                <strong class="font-bold">Perhatian!</strong>
-                                <span class="block sm:inline">Anda harus login terlebih dahulu untuk dapat mengakses fitur ini <a
-                                        href="{{ route('login.index') }}"
-                                        class="font-bold text-blue-400 underline">Login</a></span>
-                            </div>
+                                <div class="bg-yellow-100 text-dark px-4 py-5 rounded relative" role="alert">
+                                    <strong class="font-bold">Perhatian!</strong>
+                                    <span class="block sm:inline">Anda harus login terlebih dahulu untuk dapat mengakses
+                                        fitur ini <a href="{{ route('login.index') }}"
+                                            class="font-bold text-blue-400 underline">Login</a></span>
+                                </div>
                             @endguest
                         </div>
                     </form>
@@ -494,14 +494,16 @@
                     <h3 class="font-semibold text-xl text-white mb-5">Kategori</h3>
                     <ul class="text-slate-300">
                         @if ($categories->isEmpty())
-                        <li>
-                            <a href="#" class="inline-block text-xs hover:text-primary mb-3">Tidak ada category saat ini</a>
-                        </li>
+                            <li>
+                                <a href="#" class="inline-block text-xs hover:text-primary mb-3">Tidak ada
+                                    category saat ini</a>
+                            </li>
                         @endif
-                        @foreach ($categories as $category )
-                        <li>
-                            <a href="#" class="inline-block text-base hover:text-primary mb-3">{{ $category->name_category }}</a>
-                        </li>
+                        @foreach ($categories as $category)
+                            <li>
+                                <a href="#"
+                                    class="inline-block text-base hover:text-primary mb-3">{{ $category->name_category }}</a>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
@@ -585,6 +587,23 @@
             </div>
         </div>
     </footer>
+    <div class="relative bg-white dark:bg-slate-900 pattern">
+        <nav
+            class="z-20 flex shrink-0 grow-0 justify-around gap-4 border-t border-gray-200 bg-white p-2.5 shadow-lg fixed top-2/4 -translate-y-2/4 right-6 min-h-[auto] min-w-[64px] flex-col rounded-lg border">
+            <span id="light"
+                class="flex aspect-square hover:cursor-pointer min-h-[32px] w-16 flex-col items-center justify-center gap-1 rounded-md p-1.5 bg-white dark:border-opacity-0 border border-solid border-dark text-dark dark:bg-slate-100 hover:border-opacity-100 dark:text-slate-400">
+                <i class="bi bi-lightbulb-fill"></i>
+                <small class="text-center text-xs font-medium"> light </small>
+            </span>
+
+            <span id="dark"
+                class="flex aspect-square hover:cursor-pointer min-h-[32px] w-16 flex-col items-center justify-center gap-1 bg-white rounded-md p-1.5 text-gray-700 dark:bg-slate-800 hover:bg-gray-100 dark:text-primary dark:hover:bg-slate-800">
+                <i class="bi bi-moon-stars-fill"></i>
+                <small class="text-center text-xs font-medium"> dark </small>
+            </span>
+        </nav>
+    </div>
+
     <script>
         AOS.init();
     </script>

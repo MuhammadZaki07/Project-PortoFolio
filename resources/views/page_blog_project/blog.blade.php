@@ -15,12 +15,12 @@
         <div class="border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="{{ route('post.views', $post->slug) }}" class="group block">
                 <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}"
-                    class="w-full h-64 object-cover transform transition duration-500 group-hover:scale-110 hover:shadow-xl hover:rounded-lg" />
+                    class="w-full h-64 object-cover transform transition rounded-lg duration-500 group-hover:scale-110 hover:shadow-xl hover:rounded-lg" />
             </a>
         </div>
         <div class="p-3">
             <a href="{{ route('post.views', $post->slug) }}">
-                <h5 class="mb-2 text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                <h5 class="mb-2 text-xl lg:text-2xl font-bold tracking-tight text-gray-900 dark:text-primary">
                     {{ Str::words($post->title, 8) }}</h5>
                 <h6 class="text-xs lg:text-xs text-slate-400 mb-2">Category: {{ $post->category->name_category }}</h6>
             </a>
@@ -71,7 +71,7 @@
                         @foreach ($element as $page => $url)
                             @if ($page == $posts->currentPage())
                                 <li aria-current="page">
-                                    <span class="mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-red-500 p-0 text-sm text-white shadow-md transition duration-150 ease-in-out">{{ $page }}</span>
+                                    <span class="mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-red-500 p-0 dark:bg-primary text-sm text-white dark:text-primary shadow-md transition duration-150 ease-in-out">{{ $page }}</span>
                                 </li>
                             @else
                                 <li>
@@ -108,15 +108,15 @@
 <form action="{{ route('message.store') }}" method="post" class="space-y-4">
     @csrf
     <div>
-        <label for="name" class="block font-bold mb-2">Your Name</label>
+        <label for="name" class="block font-bold mb-2 dark:text-primary">Your Name</label>
         <input type="text" id="name" name="name" class="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" placeholder="Enter your name">
     </div>
     <div>
-        <label for="email" class="block font-bold mb-2">Your Email</label>
+        <label for="email" class="block font-bold mb-2 dark:text-primary">Your Email</label>
         <input type="email" id="email" name="email" class="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" placeholder="Enter your email">
     </div>
     <div>
-        <label for="message" class="block font-bold mb-2">Your Message</label>
+        <label for="message" class="block font-bold mb-2 dark:text-primary">Your Message</label>
         <textarea name="message" id="message" rows="4" class="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500" placeholder="Enter your message"></textarea>
     </div>
     <button type="submit" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">Submit</button>

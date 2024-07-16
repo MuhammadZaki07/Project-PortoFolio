@@ -14,11 +14,11 @@
             <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
                 <thead class="bg-gray-100">
                     <tr>
-                        <th class="px-4 py-2 text-center">No</th>
-                        <th class="px-4 py-2 text-center">Title</th>
-                        <th class="px-4 py-2 text-center">Image</th>
-                        <th class="px-4 py-2 text-center">Categories</th>
-                        <th class="px-4 py-2 text-center">Action</th>
+                        <th class="px-4 py-2 text-center dark:text-primary">No</th>
+                        <th class="px-4 py-2 text-center dark:text-primary">Title</th>
+                        <th class="px-4 py-2 text-center dark:text-primary">Image</th>
+                        <th class="px-4 py-2 text-center dark:text-primary">Categories</th>
+                        <th class="px-4 py-2 text-center dark:text-primary">Action</th>
                     </tr>
                 </thead>
                 <tbody id="post-results">

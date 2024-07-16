@@ -13,12 +13,12 @@
                 <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
                     <thead class="bg-gray-200">
                         <tr>
-                            <th class="px-4 py-2 text-center">No</th>
-                            <th class="px-4 py-2 text-center">Nama Sertifikat</th>
-                            <th class="px-4 py-2 text-center">Judul</th>
-                            <th class="px-4 py-2 text-center">Preview</th>
-                            <th class="px-4 py-2 text-center">Deskripsi</th>
-                            <th class="px-4 py-2 text-center">Action</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">No</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Nama Sertifikat</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Judul</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Preview</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Deskripsi</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Action</th>
                         </tr>
                     </thead>
                     <tbody id="certificate-results">

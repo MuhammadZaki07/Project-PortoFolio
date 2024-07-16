@@ -13,13 +13,13 @@
                 <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-lg">
                     <thead class="bg-gray-200">
                         <tr>
-                            <th class="px-4 py-2 text-center">No</th>
-                            <th class="px-4 py-2 text-center">Photo</th>
-                            <th class="px-4 py-2 text-center">Name</th>
-                            <th class="px-4 py-2 text-center">Email</th>
-                            <th class="px-4 py-2 text-center">School</th>
-                            <th class="px-4 py-2 text-center">Status</th>
-                            <th class="px-4 py-2 text-center">Action</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">No</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Photo</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Name</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Email</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">School</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Status</th>
+                            <th class="px-4 py-2 text-center dark:text-primary">Action</th>
                         </tr>
                     </thead>
                     <tbody id="users-results">
